@@ -1,2 +1,2 @@
-# DDLCF4R_DevStoryline
-Aquí se irá mostrando los chX y los [doki]-exclusives actuales del project Doki Doki Fighting for Reality para revisión
+# DDLCF4R_DevFiles
+Dentro de la carpeta Storylines se encontrarán con los archivos chX, los [doki]-exclusives y poemresponses actuales del project Doki Doki Fighting for Reality con propósito de revisión revisión
