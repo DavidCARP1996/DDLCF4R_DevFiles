@@ -349,7 +349,7 @@ label ch1_main_end:
             call ch1_end_sayori
         "Monika, you're the President! Do something!":
             call ch1_end_monika
-        "SHUT THE FUCK UP!!!":
+        "EVERYBODY SHUT THE FUCK UP!!!":
             call ch1_end_mc
 
     scene bg club_day
@@ -727,18 +727,10 @@ label ch1_end_natsuki:
     hide sayori
     hide monika
     with wipeleft
-    menu:
-        "Go find Yuri":
-            "I'm still feel bad for Yuri. I'm better look for her..."
-            call ch1_end_find_yuri
-        "Go to the roof":
-            "Fuck this shit, let's get out of here to take a breath."
-            scene bg school roof
-        "Just stay":
-            "In the end, though, Monika's right."
-            "Being in the Literature Club probably means I can't spend all my time doing nothing."
-            "But in the end..."
-            "...I guess it's been worth it so far."
+    "In the end, though, Monika's right."
+    "Being in the Literature Club probably means I can't spend all my time doing nothing."
+    "But in the end..."
+    "...I guess it's been worth it so far."
     return
 
 label ch1_end_sayori:
@@ -862,18 +854,10 @@ label ch1_end_sayori:
     "Monika smiles sweetly at me, causing my stomach to knot."
     "Such a genuine person really does make a good President, regardless of what she says."
     "If only I could get the chance to talk to her a little more..."
-    menu:
-        "Go drink some water":
-            "I'm thirsty, I guess I will follow Yuri and "
-            call ch1_end_find_yuri
-        "Go to the roof":
-            "Fuck this shit, let's get out of here to take a breath."
-            scene bg school roof
-        "Just stay":
-            "In the end, though, Monika's right."
-            "Being in the Literature Club probably means I can't spend all my time doing nothing."
-            "But in the end..."
-            "...I guess it's been worth it so far."
+    "In the end, though, Monika's right."
+    "Being in the Literature Club probably means I can't spend all my time doing nothing."
+    "But in the end..."
+    "...I guess it's been worth it so far."
     return
 
 label ch1_end_monika:
@@ -993,172 +977,3 @@ label ch1_end_mc:
     mc "Make peace front to Sayori, please..."
 
     return
-
-label ch1_end_find_yuri:
-    #
-    scene bg corridor
-    with wipeleft_scene
-    mc "Yuri! Yuriiiii!"
-    "Where did she go?"
-    mc "Right! The water fountain!"
-    scene bg corridor
-    with wipeleft_scene
-    "Suddently, I spot Yuri with the water pitcher... But also..."
-    "???" "Hey lady, you better hurry up because I have no enough time!"
-    y "Y-Yeah... I-I'm doing my best..."
-    "???" "Come on!"
-    "Hush! That MOTHERFUCKER!!!"
-    "That asshole is Maxxii, Monika's ex-boyfriend and the most popular boy in the school. He's very important in the debate club and sports related."
-    "We used to play in the same team during my soccer club period, but instead of helping me, he tried his best to screw my life."
-    "I've heard he was so obsessed with me, that even after my injury he started to bullying me everyday."
-    "Obviously, I never standed him. We always ended fighting each other. There's only one person who tries to stop us, a friend of mine."
-    "But he's not here, so I maybe have no chance but fight him to stop him pissing off Yuri. Also, I won't let him do anything to her."
-    mc "Maxxii, what the fuck are you supposed you're doing to that girl?"
-    mbf "What the hell do you care? Is your girlfriend or something?"
-    "I can't deny it, at least I want to go through,,,"
-    mbf "What's you gonna do at the respect? Eh?"
-    mc "I..."
-    "Oh-oh! I can't act like an crazy fuck in front of her. What could she think of me?"
-    menu:
-        "I stare at Yuri while I'm thinking my answer..."
-
-        "Kick his balls!":
-            mc "This!"
-            mbf "!"
-            y "!"
-            mbf "You...sonofa..."
-            mbf "I'M GONNA KILL YOU!!!"
-            $ ch1_battle_2_choice = 1
-            pass
-        "I'm gonna kick your ass!!!":
-            mbf "Oh yeah?"
-            y "[player] no!"
-            mc "Don't worry Yuri, I can handle myself with this asshole..."
-            mbf "I'm gonna crush your head in front of your little girlfriend!"
-            $ ch1_battle_2_choice = 2
-            pass
-        "Try to sove this without violence":
-            mc "Look, just stop rushing her, okay? She's just filling her water pitcher for her tea. And look, it's almost done!"
-            mbf "Oh yeah?"
-            "What the fuck is he doing-"
-            y "Ahhhhhh!"
-            mc "YOU...!!!"
-            mbf "Oops, sorry, I guees she must fill it again..."
-            "I did my best, Yuri, sorry but I can't contain my rage anymore..."
-            mc "YOU WILL PAY FOR THIS!!!"
-            $ ch1_battle_2_choice = 3
-            pass
-
-        ch1_battle_2
-
-        if ch1_battle_2_victory == True:
-            mc "*pant* *pant*"
-            y "[player]! Are you okay?!"
-            mc "Yes Yuri. Don't worry about me."
-            play music t9
-            y "Thank goodness."
-            mc "Ehm... Sorry about that. But... I know that idiot years ago and we always go though this kind of 'embarrasing' situations."
-            mc "It's not like I love fighting people or something. I..."
-            y "Chill [player], I understand what you mean."
-            mc "Really?"
-            y "Yes. And I know you did it because he was bullying me."
-            y "So, thank you very much~!"
-            "She suddently hugs me... Oh my god, it worthed!"
-            mc "Hehe... thanks for the hug~"
-            mc "Ouch!"
-            y "Ahh-! I'm so sorry!"
-            mc "Don't worry Yuri, you can hug me all you want, this pain is nothing compared to anything else... Hehe~"
-            y "Umm... Well."
-            y "Shouldn't we get out of here?"
-            y "I mean, that bad guy in the floor..."
-            mc "Oh, sure!"
-            "We take the water pitcher and run away from this scenario."
-            stop music fadeout 1.0
-            scene bg corridor
-            with wipeleft_scene
-            show ryoma at zorder 2
-            play music ryomatheme
-            "???" "[player]? What happened in the water fountain?"
-            mc "Ryoma!"
-            "That guy is Ryoma. Fortunately my best friend between the most important boys in the entire school."
-            "We becamed friends since we teamed up in the soccer club, I was the defender and he was the scorer, I've used to give him assistences."
-            "When I'm having problems with Maxxii or anybody from his circle, he always shows up to stop us and save my ass."
-            "But now, he came late... Well, at least Yuri doesn't hates me because of my reaction."
-            "Anyhow, he always does his best to make the convivence peacefully as possible. He doesn't a troublemaker like the other popular boys because he knows calling attention is a waste of time."
-            mcf1 "Did you... Did you just kicked Maxxii's ass?"
-            mcf1 "Brother, how long will the two of you keep fighting?"
-            mcf1 "I know he likes to piss people off, but you can't fall in his traps so easily..."
-            mc "Sorry Ryoma, but I couldn't stand to see how he dares to bully her."
-            mcf1 "Was that then..."
-            mcf1 "Sorry, ehm..."
-            y "Yuri. M-My name is Yuri."
-            mcf1 "Yeah, sorry about that Yuri."
-            y "Don't worry."
-            mcf1 "Really, I don't know what's wrong with him. He thinks bullying people makes him important, but he is wrong."
-            mc "Yeah. Thank goodness you're not like him."
-            mcf1 "Hehe, yeah. Anyway..."
-            mcf1 "Get out of here before someone else comes, I'm gonna back you up."
-            mc "Alright then... Thanks Ryoma!"
-            mcf1 "Don't mention it."
-            pass
-        if ch1_battle_2_victory == False:
-            y "[player]!"
-            mbf "Take that!"
-            "Yuri... I'm so... sorry..."
-            "???" "Maxxii! Stop! Now!"
-            play music ryomatheme
-            mbf "What the...?{p} Ryoma???"
-            mcf1 "Get away! Why do you still want to beat [player] up?"
-            mbf "He searched for it!"
-            y "T-That's not true!"
-            mbf "You shut up!"
-            mc "Grrr-!"
-            mbf "Wha-{nw}"
-            "I knock that motherfucker with all of my willpower."
-            mcf1 "[player] no! Stop it, please!"
-            y "[player], listen to him, stop it please!"
-            mc "Eh?"
-            "If Yuri say so... I will obey Ryoma then."
-            "That guy is Ryoma. Fortunately my best friend between the most important boys in the entire school."
-            "We becamed friends since we teamed up in the soccer club, I was the defender and he was the scorer, I've used to give him assistences."
-            "When I'm having problems with Maxxii or anybody from his circle, he always shows up to stop us and save my ass."
-            "But now, he came late... Well, at least Yuri doesn't hates me because of my reaction."
-            "Anyhow, he always does his best to make the convivence peacefully as possible. He doesn't a troublemaker like the other popular boys because he knows calling attention is a waste of time."
-            mcf1 "Thank goodness... And thanks, ehm..."
-            y "Yuri. M-My name is Yuri."
-            mcf1 "Yeah, thanks Yuri. Seems like he can hear you better."
-            mcf1 "Let's go somewhere or we'll be in serious trouble."
-            y "Y-Yeah!"
-            scene bg corridor
-            with wipeleft_scene
-            stop music fadeout 1.0
-            mcf1 "Here is fine."
-            mcf1 "Now [player], what happened? Why both of you keep fighting each other like animals?"
-            mc "I..."
-            y "I-I can explain everything..."
-            y "That bad guy was rushing me with bullying, that make [player] so angry that they start fighting each other."
-            mcf1 "I see..."
-            y "It's my fault for [player]'s actual state..."
-            mcf1 "No. Absolutely no."
-            y "Eh?"
-            mcf1 "Maxxii likes to bully people for fun. He and [player] always starts a fight because [player] can't stand his attitude."
-            mcf1 "Really, I don't know what's wrong with him. He thinks bullying people makes him important, but he is wrong."
-            y "I-I see..."
-            mc "Thank goodness you're not like him Ryoma..."
-            mcf1 "Hehe, yeah. Anyway..."
-            mcf1 "Get out of here before someone else comes, I'm gonna back you up."
-            mc "Alright then... Thanks Ryoma!"
-            mcf1 "Don't mention it."
-            pass
-
-        stop music fadeout 1.0
-        scene bg corridor
-        with wipeleft_scene
-        mc "I'm sorry about that fight Yuri... Really, I'm feeling like an asshole right now."
-        mc "I mean, what kind of human with common sense solve problems with violence?"
-        y "Don't worry [player], you got a reason for doing that."
-        y "You did it to protect me... And..."
-        y "Nobody did that for me before..."
-        mc "Really?"
-        y "Yes."
-        y "Some people dares to bully me because of my personality, my "
