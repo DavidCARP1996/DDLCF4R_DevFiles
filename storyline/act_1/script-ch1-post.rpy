@@ -118,6 +118,7 @@ label ch1_post_loop:
                 $ money += 100
                 "[player] received $100."
                 mc "Ehm... Thank you...(?)"
+                "I said that with a mix of gratitude and WTF expressions."
                 "Cop" "It was nothing boy, good luck!"
                 "The cop leaves me alone."
                 mc "..."
@@ -131,47 +132,46 @@ label ch1_post_loop:
                 mc "First I kill that asshole and the cop was trying to arrest me, but then he changed of mind..."
                 mc "*sigh*"
                 pause 1.0
-                show monika 1e at t11 zorder 1
-                m "[player], are you okay?"
+                show monika at t11 zorder 1
+                m 1d "[player], are you okay?"
                 mc "Monika?! What are you doing here?"
                 mc "I-I mean... Have you seen ev-"
-                m "Yes, I do."
+                m 2a "Yes, I do."
                 m "Thank goodness you were able to win."
-                m "Otherwise, we'll be still 4 members in the club. Hahaha~!"
+                m 2l "Otherwise, we'll be still 4 members in the club. Hahaha~!"
                 "What's so funny? I would be fucking dead right now!"
-                m "Anyway. I'm so glad you're okay after all!"
+                m 1b "Anyway. I'm so glad you're okay after all!"
                 m "Sayori could be very sad if something happens to you."
                 "After Monika said that, I feel like my stomach is twisting for no reason."
-                m "So, do you want to take you to your house?"
+                m 5 "So, do you want I take you to your house?"
                 menu:
                     "Sorry, but I have things to do...":
-                        m "Hmm... Okay!"
-                        m "Good luck with your bussiness~!"
+                        m 1e "Hmm... Okay!"
+                        m 1k "Good luck with your bussiness~!"
                         mc "Thanks Monika."
                         mc "I see you later!"
                         show monika at thide zorder 1
                         hide monika
                         "Alright, let's go somewhere else..."
-                        $ stamina -= 4
                         pass
                     "Sure...":
-                        m "Alright! I'll take you in my car then."
+                        m 1j "Alright! I'll take you in my car then."
                         m "Come with me."
                         mc "Okay!"
                         scene bg house
                         with wipeleft_scene
-                        m "Here we are."
+                        m 1a "Here we are."
                         mc "Thanks Monika, I owe you one."
                         m "It was nothing."
-                        m "So, see you tomorrow?"
+                        m 1b "So, see you tomorrow?"
                         mc "Yes Monika, see you tomorrow."
-                        m "Fine. Good luck bro~!"
+                        m 5 "Fine. Good luck bro~!"
                         show monika at thide zorder 1
                         hide monika
                         "Monika's car is gone in the horizon..."
-                        "Now what?"
-                        $ stamina -= 1
+                        mc "Now what?"
                         pass
+                $ stamina -= 3
                 show screen freeroam_hud
                 with Dissolve(.5)
 
@@ -203,8 +203,9 @@ label ch1_post_loop:
                 mc "Let's go to her home to pick up her and then let's go to the cafe."
                 scene bg cafe
                 with wipeleft_scene
+                show sayori 4br at t11 zorder 1
                 s "Thank you very much for taking me to eat [player]!"
-                s "That's why you are my favourite person in the entire World!"
+                s 4bs "That's why you are my favourite person in the entire World!"
                 mc "Hehe-! If you say so..."
                 pass
             "[ch1_winner]" if poemwinner[0] != "Sayori":
@@ -215,31 +216,36 @@ label ch1_post_loop:
                 with wipeleft_scene
                 if ch1_winner == "Yuri":
                     if ch1_choice == "yuri":
+                        show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
-                        y "I-If you don't mind, I brought a book with me... I mean, if you want to read something while we're waiting for our food."
+                        y 2bc "I-If you don't mind, I brought a book with me... I mean, if you want to read something while we're waiting for our food."
                         mc "Hehe-! No problem Yuri. I was planing to talk about each other, but if you want to read then-"
-                        y "I..."
-                        y "Well, that's nice too..."
+                        y 1bh "I..."
+                        y 1bj "Well, that's nice too..."
                         "Oh-oh, I'm in trouble..."
                         menu:
                             "Let's read":
+                                show yuri 1bf
                                 mc "I don't want to force you to talk if you don't want. I..."
                                 mc "I guess reading is, something to share our interests too..."
                                 mc "Right?"
-                                y "You got a point!"
-                                y "Well, don't you mind if we read something called..."
+                                y 2bd "You got a point!"
+                                y 1bd "Well, don't you mind if we read something called..."
                                 pass
                             "Let's talk":
+                                show yuri 1bf
                                 mc "Listen Yuri, you know how much I love to read with you..."
                                 mc "But, don't you think a little talk can help us to know each other a bit better?"
+                                show yuri 1bv
                                 mc "I mean, I want to tell you stories about my life, the things what I love, your interests, and check if we have compatibilities on something we like."
                                 mc "Isn't that how socializing works?"
-                                y "I... I guess you're right..."
-                                y "I would love to talk about m-my life too..."
+                                y 1bt "I... I guess you're right..."
+                                y 1bs "I would love to talk about m-my life too..."
                                 y "Umm..."
-                                y "Who starts first?"
+                                y 2bq "Who starts first?"
                                 pass
                     elif ch1_choice == "natsuki":
+                        show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y "I-I hope the thing what happened in the club doesn't..."
                         mc "Don't worry Yuri, it wasn't your fault."
@@ -261,6 +267,7 @@ label ch1_post_loop:
                         mc "Well, how much do you know about her?"
                         pass
                     else:
+                        show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y "I thought you could like more spending time with Sayori, but..."
                         mc "Hey."
@@ -274,10 +281,11 @@ label ch1_post_loop:
                     with dissolve_scene_full
                     scene bg cafe
                     with dissolve_scene_full
+                    show yuri 3bd at t11 zorder 1
                     y "Oh my god... It was delicious!"
                     mc "And our conversation was very interesting."
-                    y "Indeed."
-                    y "Thank you very much for sharing this moment with me."
+                    y 1bc "Indeed."
+                    y 2bs "Thank you very much for sharing this moment with me."
                     y "I hope we can repeat it again someday..."
                     mc "Me too Yuri."
                     pass
@@ -314,11 +322,12 @@ label ch1_post_loop:
                 mc "I'm gonna call her so we can meet in the cafe."
                 scene bg cafe
                 with wipeleft_scene
+                show camilla at t11 zorder 1
                 mcf2 "Hey~! [player]~! It's good to see you!"
                 "She hugs me strongly..."
                 mc "Me too Camilla."
                 "I hug her back."
-                mcf2 "Look, I saw that portion of cake and that give me hungry.. a lot to be exactly."
+                mcf2 "Look, I saw that portion of chocolate cake and that give me hungry.. a lot to be exactly."
                 mcf2 "Oh! And I want this banana smoothie too..."
                 mc "No problem Camilla, for you, I could buy the entire cafeteria!"
                 mcf2 "Hmm... Don't worry about the money. I will pay it."
@@ -340,6 +349,25 @@ label ch1_post_loop:
                 "She's giving me a sweet and irresistible smile."
                 "I imitate her..."
                 mc "Right!"
+                scene black
+                with dissolve_scene_full
+                scene bg cafe
+                with dissolve_scene_full
+                show camilla at t11 zorder 1
+                mcf2 "This is awesome! The best chocolate cake and banana smoothie I've tasted ever!"
+                mc "Indeed, the food here is delicious. That's why every time I have to get up early, I come here for breakfast."
+                mcf2 "You know, you must invite to one of your friends from the Literature Club to eat here too."
+                mc "Well, I already invited Sayori here many times... But I will take your offer about the others too."
+                mc "Thanks Camilla."
+                mcf2 "Uhuhu~! It was nothing [player]."
+                mcf2 "Thanks to you for inviting me to eat this delicious food."
+                mc "Don't mention it."
+                mc "And if you want, we can go to a bar and drink some beers."
+                mcf2 "Good idea!"
+                mcf2 "Alright, call me if you want to hang with me again."
+                mc "I'll do."
+                mcf2 "Goodbye [player]! Best wishes..."
+                mc "Best wishes for you too Camilla. Good bye!"
                 pass
             "Go alone":
                 mc "Ahh, fuck it!"
