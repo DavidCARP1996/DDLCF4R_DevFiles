@@ -11,8 +11,7 @@ label ch1_post:
     with wipeleft_scene
     pause 3.0
     "..."
-    "You know what?"
-    "I'm thirsty... I want to go to the cafeteria and drink something."
+    "I'm hungry... I want to go to the cafeteria and eat something."
     $ HKBShowButtons()
     "So, let's go!"
     "And if you want, we can do something else..."
@@ -116,17 +115,17 @@ label ch1_post_loop:
                 mc "I..."
                 "What did just happened?!"
                 "Cop" "Here is your reward for good citizen boy."
-                $ money += 500
-                "[player] received $500."
+                $ money += 100
+                "[player] received $100."
                 mc "Ehm... Thank you...(?)"
                 "Cop" "It was nothing boy, good luck!"
                 "The cop leaves me alone."
                 mc "..."
                 scene bg park way
                 with wipeleft_scene
-                $ money += 500
+                $ money += 100
                 "I move away from the scene, giving back the wallet to the woman on the way."
-                "She gave me $500 too."
+                "She gave me $100 too."
                 "I take a sit un a bench."
                 mc "What the fuck did just happened?"
                 mc "First I kill that asshole and the cop was trying to arrest me, but then he changed of mind..."
@@ -135,7 +134,7 @@ label ch1_post_loop:
                 show monika 1e at t11 zorder 1
                 m "[player], are you okay?"
                 mc "Monika?! What are you doing here?"
-                mc "I-I mean... Did you saw ev-"
+                mc "I-I mean... Have you seen ev-"
                 m "Yes, I do."
                 m "Thank goodness you were able to win."
                 m "Otherwise, we'll be still 4 members in the club. Hahaha~!"
@@ -153,8 +152,6 @@ label ch1_post_loop:
                         show monika at thide zorder 1
                         hide monika
                         "Alright, let's go somewhere else..."
-                        scene bg residential_day
-                        with wipeleft_scene
                         $ stamina -= 4
                         pass
                     "Sure...":
@@ -249,7 +246,7 @@ label ch1_post_loop:
                         mc "In fact, I wanted to apologize about what I said in that moment."
                         mc "I mean, I knew Natsuki was wrong... But I thought the thing what I said was a neutral position, because I don't want troubles with anyone in the club."
                         mc "I never wanted to hurt you... You are a wonderful girl, you deserve the best."
-                        "If with 'the best' I'm meaning to myself, I'm gonna laugh out loud... Hahahahahaha!"
+                        "If with \"the best\" I'm meaning to myself, I'm gonna laugh out loud... Hahahahahaha!"
                         y "That's... That's nice from your part..."
                         y "And yes, I will forgive you. Afterwards, you tried to calm the things down."
                         mc "Thank you very much Yuri... I wished for this!"
@@ -415,11 +412,11 @@ label ch1_post_loop:
                 else:
                     mc "No! I don't have such money by the way..."
                     pass
-            "Buy\n Symbol of Blaze: Destiny ($3000)"
-                if money >= 3000:
+            "Buy\n Symbol of Blaze: Destiny ($4000)":
+                if money >= 4000:
                     mc "Ok, I hope it's worth..."
                     $ bag_inventory.add_item("yvideogame", score=1)
-                    $ money -= 3000
+                    $ money -= 4000
                     "[player] bought Symbol of Blaze: Destiny."
                     pass
                 else:
@@ -461,55 +458,63 @@ label ch1_post_loop:
 
             menu:
                 "Alright, let's see..."
-                "Happy Thoughts \n $650" if not sbook_bought:
+                "Happy Thoughts \n $650" if not bag_inventory.has_item("sbook1"):
                     mc "..."
                     mc "Sayori may like this one..."
                     menu:
                         "Buy Happy Thoughts ($650)?"
                         "Yes":
                             $ money -= 650
-                            $ sbook_bought = True
                             $ bag_inventory.add_item("sbook1", score=1)
                             "You bought the book \"Happy Thoughts\"."
                             $ books_bought += 1
                         "No":
                             pass
-                "Dark in the blossoms \n $680" if not ybook_bought:
+                "Dark in the blossoms \n $680" if not bag_inventory.has_item("ybook1"):
                     mc "..."
                     mc "Could Yuri love this?"
                     menu:
                         "Buy Dark in the blossoms ($680)?"
                         "Yes":
                             $ money -= 680
-                            $ ybook_bought = True
                             $ bag_inventory.add_item("ybook1", score=1)
                             "You bought the book \"Dark in the blossoms\"."
                             $ books_bought += 1
                         "No":
                             pass
-                "Anime & Stuff \n $760" if not nbook_bought:
+                "Anime & Stuff \n $760" if not bag_inventory.has_item("nbook1"):
                     mc "..."
                     mc "Maybe this can help me with Natsuki..."
                     menu:
                         "Anime & Stuff ($760)?"
                         "Yes":
                             $ money -= 760
-                            $ nbook_bought = True
                             $ bag_inventory.add_item("nbook1", score=1)
                             "You bought the book \"Anime & Stuff\"."
                             $ books_bought += 1
                         "No":
                             pass
-                "Shadows of epiphany \n $500" if not mbook_bought:
+                "Shadows of epiphany \n $500" if not bag_inventory.has_item("mbook1"):
                     mc "..."
                     mc "So, this is the book that Monika talked about..."
                     menu:
                         "Buy Shadows of epiphany ($500)?"
                         "Yes":
                             $ money -= 500
-                            $ mbook_bought = True
                             $ bag_inventory.add_item("mbook1", score=1)
                             "You bought the book \"Shadows of epiphany\"."
+                            $ books_bought += 1
+                        "No":
+                            pass
+                "Car Thief 5 - The Guide \n $300" if not bag_inventory.has_item("mcbook1"):
+                    mc "Oh my God!"
+                    mc "The Official guide of Car Thief 5!"
+                    menu:
+                        "Buy Car Thief 5 - The Guide ($300)?"
+                        "Yes":
+                            $ money -= 300
+                            $ bag_inventory.add_item("mcbook1", score=1)
+                            "You bought the book \"Car Thief 5 - The Guide\"."
                             $ books_bought += 1
                         "No":
                             pass
@@ -533,41 +538,20 @@ label ch1_post_go_home:
     with Dissolve(.5)
     pass
     if menutext == "Where should I go next?" or stamina <= 0:
+        scene bg house
+        with wipeleft_scene
         mc "Finally! Home sweet home..."
         mc "I'm tired, you know?"
-    mc "..."
-    mc "You know what?"
-    mc "Fuck this shit."
-    mc "I'm so fucking tired, that I prefer to take a nap before start to write a fucking poem."
+        "..."
+        mc "Let's write the poem."
+    else:
+        mc "You know what?"
+        mc "Fuck this shit."
+        mc "Let's just write a poem and I'm gonna sleep."
     scene bg bedroom
     with wipeleft_scene
     pause 1.0
-    play sound click
-    scene bg bedroom dark
-    mc "Yeah!"
-    mc "Let's do that poem shit another time..."
-    mc "Zzzzzzzzzzz..."
-    scene black
-    with dissolve_scene_full
-    pause 1.0
-    scene bg bedroom dark
-    with dissolve_scene_full
-    "..."
-    mc "Hm? 23 PM?"
-    mc "Did I fall asleep in the middle of the afternoon?"
-    mc "Shit..."
-    play sound click
-    scene bg bedroom
-    mc "The poem!"
-    mc "I didn't did it!"
-    mc "Alright alright..."
-    mc "There's still time left. Once it finished, I'll sleep again."
-    mc "First of all, I'll go make coffee and a sandwich because I get hungry."
-    scene black
-    with dissolve_scene_full
-    pause 2.0
-    scene bg bedroom
-    with dissolve_scene_full
     mc "Okay? Let's go!"
 
 return
+
