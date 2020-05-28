@@ -531,6 +531,7 @@ label ch1_end_yuri:
     y "You probably hate me now..."
     mc "No--Yuri!"
     mc "How could anyone not have gotten frustrated after being treated like that?"
+    show yuri 4a
     mc "You handled it as well as anyone could."
     mc "I don't think any less of you."
     mc "Also, I wanted to interrupt and help you, but I didn't wanted to screw up everything, so..."
@@ -556,6 +557,7 @@ label ch1_end_yuri:
                     mc "Don't mention it."
                     mc "And if sometime, Natsuki or anyone tries to bully on you, just tell me and I'm gonna fix everything."
                     mc "No matter how threatening the person is, I'm already dealing with some idiots."
+                    "I press my right fist on my left chest, suggesting that's a promise from my heart."
                     pass
                 "Your boobs are real, and nice...":
                     y 3p "[player]!"
@@ -882,7 +884,7 @@ label ch1_end_monika:
     show monika 1h
     "Suddently, Monika's expression changed for an determinated one."
     m "..."
-    show monika zorder 3
+    show monika at f31 zorder 3
     m 1i "You are right!"
     m 2i "Listen everybody! Now!"
     stop music fadeout 1.0
@@ -904,14 +906,18 @@ label ch1_end_monika:
     s "Monika..."
     y "..."
     n "..."
+    show monika at f42
     m 1h "Alright. Both of you must apologize to each other."
     m "Now!"
+    show monika at t42
+    show yuri at s43
     y 4a "I..."
+    show natsuki at s44
     n 5q "Hmm..."
     "..."
     "Seems like it works, after all, a girl like Monika is sign of respect in this school. It's easy for her to convince other people."
     "But I had to start to make her react, for some reason seems like she did not care about the situation."
-    show natsuki 4c
+    show natsuki 4c at t44
     stop music fadeout 1.0
     "However, Natsuki breaks the silence..."
     show natsuki at f44 zorder 3
@@ -929,40 +935,51 @@ label ch1_end_monika:
     show monika 1q
     n 1x "This is exactly why..."
     "Ah shit, here we go again."
-    show monika 1c
+    show monika 1c zorder 3
     "I pat Monika on the shoulder and point at them to convince her to stop them."
-    show sayori 1u
+    show sayori 1u at s41
     "I can see Sayori beign sad about this situation, but it's Monika's responsability to make this club a non-toxic place."
     n 1w "Exactly why nobody likes--"
     show natsuki at t44 zorder 2
     stop music
+    show monika at f42
     m 2i "{i}Okay, that's enough!!{/i}"
-    show sayori 1v
+    show sayori 1v at h41
     show yuri 3f at f43 zorder 3
     show natsuki 1o at f44 zorder 3
     ny "--"
     show yuri at t43 zorder 2
     show natsuki at t44 zorder 2
     m "Natsuki, you should be more respectful to the opinions of others."
-    m "Yuri is just trying to give you some advices, but she's so anti-social to say the correct words. You know?"
+    m "Yuri is just trying to give you some advices."
+    show yuri 4c at s43
+    m "But she's so anti-social to say the correct words. You know?"
+    show natsuki at f44 zorder 3
     n 1r "I..."
+    show natsuki at t44 zorder 2
     m 2d "And Yuri..."
+    show yuri at f43 zorder 3
     y 3v "..."
     m "Don't be so hostile to Natsuki's skills, she's still practicing her writing skills. Right Natsuki?"
     y "Um..."
+    show yuri at t43 zorder 2
     show sayori 1t
     play music t8
     m 1b "Also. Both of you has talent for this." 
     m "I mean, Natsuki has the creativity to make special poems from her style."
     m 4b "And Yuri is already very talented with her writing emphasis, she could be very helpful in this club."
     "I stare at Sayori, she seems to start to be very happy with Monika's discourse."
-    show monika 4a
+    show monika 4a at t42 zorder 3
+    show sayori at f41 zorder 3
     s 4t "Monika..."
+    show sayori at t41 zorder 2
     show natsuki 1o
     show yuri 3n
     ny "..."
+    show yuri at t43 zorder 2
+    show natsuki at t44 zorder 2
     ny "Okay..."
-    show monika 1a
+    show monika 1a at t42
     "It's over? Thank goodness, it worked."
     show yuri at s43
     y 3q "I'll...make some tea..."
@@ -972,28 +989,28 @@ label ch1_end_monika:
     show natsuki at thide zorder 1
     hide natsuki
     "Natsuki sits down with a blank expression on her face, staring at nothing."
-    show sayori at t21 zorder 3
+    show sayori at f21 zorder 3
     show monika at t22
     s 4r "Didn't I told you [player]? That's why Monika is the best president ever!"
-    show sayori zorder 2
-    show monika 1n zorder 3
+    show sayori at t21
+    show monika 1n at f22
     m "Oh come on, Sayori! It was nothing..."
     m 2a "By the way, it was [player] who give me a little push."
     m 5 "He deserves some credit for that."
-    show monika zorder 2
+    show monika at t22
     "Me? Well, maybe yes, but I won't say anything about it. I don't want to be a show-off."
-    show sayori 5 zorder 3
+    show sayori 5 at f21
     s "You both make a nice couple. Maybe I should quit has Vice President and name [player] the new Vice President."
     show monika 1d
     s 5b "The Literature Club could be a better place if both of you are running it together."
     mc "S-S-Sayori...!!!"
-    show sayori zorder 2
+    show sayori at t21
     "How dare she to say something so embarrasing?! Now I'm blushing so much that I look like a tomato!"
     #"If the \"School Elite\" hears it, they will hang me in the flagpole with my balls."
-    show monika 2n zorder 3
+    show monika 2n at f22
     m "Uhuhuhu! Sayori you really are a funny girl..."
-    show sayori 4s zorder 3
-    show monika zorder 2
+    show sayori 4s at f21
+    show monika at t22
     s 4s "Hehehe! Thanks."
     show sayori at lhide zorder 1
     hide sayori
@@ -1024,60 +1041,69 @@ label ch1_end_monika:
     "Being in the Literature Club probably means I can't spend all my time doing nothing."
     "But in the end..."
     "...I guess it's been worth it so far."
-
     return
 
 label ch1_end_mc:
     $ ch1_choice = "mc"
+    stop music
+    show sayori 1g at l41 zorder 2
+    show monika 1c at l42 zorder 2
+    show yuri at t43 zorder 2
+    show natsuki at t44 zorder 2
     mc "EVERYONE SHUT THE FUCK UP!!!!!"
     show sayori 1h at h41 zorder 2
     show monika 1d at h42 zorder 2
     show yuri 3p at h43 zorder 2
     show natsuki 1p at h44 zorder 2
-    stop music
     "Everyone stops and look at me with a surprised expression."
     mc "Don't you see that?! Your fighting bullshit is making Sayori sad!"
     mc "Just look at her face!!!"
-    show sayori 1v at t41 zorder 2
-    show monika 1i at t42 zorder 2
-    show yuri 3t at t43 zorder 2
-    show natsuki 4f at t44 zorder 2
+    show sayori 1v at f41 zorder 2
+    show monika 1i at f42 zorder 2
+    show yuri 3t at f43 zorder 2
+    show natsuki 4f at f44 zorder 2
     "Everyone" "[player]..."
+    show sayori at t41
+    show monika at t42
+    show yuri at t43
+    show natsuki at t44
     mc "Monika."
     mc "Isn't you supposed to be the President Club here?"
     mc "Why the fuck you're doing NOTHING?! WHY?!"
-    show monika 2p zorder 3
+    show monika 2p at f42 zorder 3
     m "[player], stop it!"
+    show monika at t42
     mc "Stop? Stop?!"
-    show monika 2r zorder 2
+    show monika 2r
     mc "YOU must stop the riots here! YOU are a Club President, a {i}popular girl{/i}, not a fucking good for nothing like me!"
+    show monika zorder 2
     show yuri 3n at h43 zorder 3
     show natsuki 1e at h44 zorder 3
     ny "[player]!"
-    show yuri zorder 2
-    show natsuki zorder 2
-    show sayori 4w at t41 zorder 3
+    show yuri at t43 zorder 2
+    show natsuki at t44 zorder 2
+    show sayori 4w at f41 zorder 3
     s "[player], please stop!"
-    show sayori zorder 2
     "Is Sayori crying for MY FAULT???"
     "Fuck!"
     "I stare anger at Monika."
-    show sayori 1u
-    show monika 1c
+    show sayori 1u at t41 zorder 2
+    show monika 1c at f42 zorder 3
     mc "Look!"
     mc "One thing that makes me so angry is seeing Sayori crying for a stupid shitty fight between her friends."
     mc "She knows that, I'm always pissed off when something or someone makes her sad!"
+    show monika at t42 zorder 2
     "I'm looking at Sayori."
+    show sayori at f41 zorder 3
     mc "Sayori... I'm so sorry."
-    show sayori 1u zorder 3
-    s "Eh?"
+    s 1v "Eh?"
     mc "I'm gonna try to fix this myself..."
     s 4t "[player]..."
-    show sayori zorder 2
+    show sayori at t41 zorder 2
     play music t8
+    show yuri at f43 zorder 3
     mc "Yuri..."
-    show yuri 4a zorder 3
-    y "..."
+    y 4a "..."
     mc "No matter if someone dares to insult you with anything, you must ignore them."
     mc "Also, I must say... You have a {i}sexy body{/i}. {nw}"
     y 3n "[player]--!"
@@ -1089,10 +1115,10 @@ label ch1_end_mc:
     show yuri 3f
     "I pat Yuri on the shoulder and wink her with a smile."
     y 3q "T-T-Thank you..."
-    show yuri zorder 2
+    show yuri at t43 zorder 2
+    show natsuki at f44 zorder 3
     mc "Natsuki..."
-    show natsuki 5e zorder 3
-    n "What?!"
+    n 5e "What?!"
     mc "You seriously have a problem, your aggresive personality drives you at a bully behavior in situations like that."
     mc "Yuri was trying to give you a friendly advice about your writing skills and..."
     n 1f "Shut up, jerk! What do you know about literature to say that?"
@@ -1105,32 +1131,32 @@ label ch1_end_mc:
     show natsuki 5g
     mc "If somebody reviews your poems and give you an advice to enhance your skills, don't take that like an fucking insult please..."
     n 5w "Hmph! Whatever..."
-    show natsuki zorder 2
+    show natsuki at t44 zorder 2
     mc "Yuri..."
-    show yuri zorder 3
+    show yuri at f43 zorder 3
     y 2t "Eh?!"
     mc "You should review Natsuki's stuffs less heavier, you already know how she reacts if you take the opposite."
     show natsuki 5k
     mc "Also, today's Natsuki poem was very interesting. Even for the simpliest way it was writed."
     mc "I might give her an opportunity... You should do that too."
     y 2u "... okay ..."
-    show yuri zorder 2
+    show yuri at t43 zorder 2
     mc "Ah! Both of you, one more thing:"
-    show yuri 1f
-    show natsuki 2c
+    show yuri 1f at f43 zorder 3
+    show natsuki 2c at f44 zorder 3
     ny "..."
     mc "Make peace between both of you, at least in front to Sayori, please..."
-    show yuri at s43
+    show yuri at s43 zorder 2
     y 3t "Alright."
-    show natsuki at s43
+    show natsuki at s44 zorder 2
     n 42b "Okay fine..."
-    show sayori zorder 3
+    show sayori at f41 zorder 3
     s 4t "[player]... Thank you very much! You're awesome!"
     show sayori 4s at h41
     "Sayori jumps on me in order to hug me strongly."
     mc "A-Ah.. It was nothing Sayori..."
-    show sayori zorder 2
-    show yuri at s32
+    show sayori at t41 zorder 2
+    show yuri at s43 zorder 3
     y 3q "I'll...make some tea..."
     show yuri at lhide behind sayori
     hide yuri
@@ -1139,19 +1165,19 @@ label ch1_end_mc:
     hide natsuki
     "Natsuki sits down with a blank expression on her face, staring at nothing."
     show sayori at t21
-    show monika at t22 zorder 3
+    show monika at f22 zorder 3
     m 2d "[player], I'm surprised, I never thought you have such strong personality to make peace and order on a group."
     m 2l "I guess I understated you all this time~! Hahahaha..."
-    show monika zorder 2
+    show monika at t22 zorder 2
     mc "Ahahahaha..."
     "I make a fake laugh, her \"joke\" wasn't funny, but I'm trying to sympathize with her too."
     mc "I... I guess you're right..."
     "I don't even know what I'm saying."
     "Suddently, I'm getting a lot of attention from Monika since I'm member. I'm getting scared."
-    show sayori zorder 3
+    show sayori at f21 zorder 3
     s 3x "Have you see that Monika? I told you [player] is a awesome guy!"
     s "Even if the doesn't pretend it, he is a man with strong and determinated nature."
-    show sayori zorder 2
+    show sayori at t21 zorder 2
     mc "Hehehe, yes. I guess..."
     show sayori at lhide zorder 1
     hide sayori
@@ -1172,8 +1198,8 @@ label ch1_end_mc:
     mc "I see... Well, It's not like I can blame you."
     mc "I wasn't able to say anything good, either."
     mc "I'm only good at swearing for anything."
-    m 2a "Hmm... You did that because of Sayori, isn't?"
-    m "You always acted like her 'Guardian angel' or something like that..."
+    m 2a "Hmm... You did all this because of Sayori, isn't?"
+    m "You always acted like her 'Guardian angel' or something like that...?"
     m "And if she's sad, you're sad too, isn't?"
     mc "I guess you got a point."
     m "Well..."
