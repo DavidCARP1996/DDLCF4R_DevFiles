@@ -1,154 +1,123 @@
-label ch1_prev:
+label ch2_prev:
     stop music fadeout 2.0
     with dissolve_scene_full
     
-    scene bg bedroom night
+    scene bg bedroom
     with dissolve_scene_full
-    mc "Fuck."
-    mc "Look at the hour."
-    mc "I must go to sleep."
+    mc "Aaaand it's done!"
+    mc "Well, I guess I will play some videogames."
+    "..."
+    "If only I had bought that game..."
+    mc "It's 22 PM."
+    mc "I think I'd better go to sleep. I don't have such interesting games in my library to play."
+    pause 1.0
+    play sound click
+    scene bg bedroom dark
     scene black
     with dissolve_scene_full
-    pause 3.0
-    "After a few minutes trying to consilate the sleep, I'm success..."
-    scene black
-    with dissolve_scene_full
-    pause 3.0
+    pause 2.0
 
     show mask_2
     show mask_3
     with dissolve_scene_full
     
     play music m1
-    "But sudently, I'm in a weird dream. Again."
-    mc "Wait, again?!"
+    "Once again, I'm having this dream..."
+    mc "Hey, mysterious lady! I know you're behind of this. Show yourself because I want to know what's your real purpose..."
     show screen tear(20, 0.1, 0.1, 0, 40)
     play sound "sfx/s_kill_glitch1.ogg"
     pause 0.25
     stop sound
     hide screen tear
     show monika sdwf1 at t11 zorder 2
-    mc "You?!"
-    if persistent.ytellyouherbookstore == True:
-        "???" "... ... ..."
-        mc "Hey! I must thank you for this Save/Load script..."
-        mc "I just did something that made my day happy and..."
-        "???" "..."
-        mc "Ehm... Are you okay?"
-        "???" "What in the world are you doing?"
-        mc "What?"
-        "???" "Don't play dumb."
-        "???" "I know what have you done."
-        "???" "Did you changed your course of the bookstore because you wanted to see that violet-haired girl?!"
-        mc "And what's wrong with that?"
-        mc "You gave me this power to make the right decisions, right?"
-        "???" "You Idiot!"
-        "???" "You already fucked up that timeline. When you regret for that there is no going back anymore..."
-        mc "Well, maybe I will NEVER regret that!"
-        "???" "Hush! I knew you would be a motherfucking asshole!"
-        mc "..."
-        "???" "Anyway..."
-        pass
+    "???" "Did you call me?"
+    mc "Yes."
+    mc "You know, I obviously know what's my purpose, but don't you think this kind of \"dreams\" aren't so neccesary?"
+    mc "I can't even have an decent dream because everytime I sleep I'm spawned here..."
+    mc "I want at least ONCE have a dream with Yuri{nw}"
+    "???" "Enough!"
+    "???" "I understand what do you mean."
+    "???" "But I can't allow you this pleasure. Not until I fulfill my objective."
+    mc "Oh come on!"
+    mc "I'm getting tired of all this, and... well, if you tell me exactly what's your objective without beign so mysterious..."
+    mc "I could possibly help to you fulfill your objective faster."
+    "???" "You shouldn't have to know that."
+    mc "Shit..."
+    if ch1_battle_2_won == True:
+        "???" "At least thank me for saving you of beign arrested."
+        mc "I knew it!"
+        mc "Thanks anyway, and sorry for not thanking you before, I was disconcerted for the suddently situation."
+        "???" "No problem. I will let it pass for now."
     else:
-        "???" "Well..."
         pass
-    "???" "Did you enjoy wasting your time writing a poem?"
-    "???" "It's almost time to wake up."
-    "???" "I feel bad for your misserable life."
-    "???" "You weirdo freak."
-    mc "Was that insult so neccesary?"
-    "???" "Yes."
-    "???" "But listen."
-    if poemwinner[0] == "Monika":
-        "???" "Hmmm...?"
-        "???" "Wow!"
-        "???" "Nice!"
-        "???" "I didn't know you were very good with poems."
-        "???" "Seems like I was right choosing you~!"
-        mc "What are you talking about?"
-        mc "That poem is not even for you!"
-        mc "Give it back, please!"
-        "???" "Okay~... Hehe~"
-        "???" "You know? You're going in the right way..."
-        "???" "This poem is the proof of that."
-        mc "What?!"
-        mc "It's just a fucking poem, it doesn't change anything."
-        mc "Are you saying that the right way was entering in the Literature Club? Is that it?"
-        "???" "..."
-        "???" "Shut up!"
-        "???" "Even if you're an good poet, looks like you're still an idiot."
-        "???" "Look, just watch your back, ok?"
-        "???" "I'll see you later..."
-        pass
-    else:
-        "???" "Hmmm..."
-        "???" "I see."
-        "???" "You was just wasting your time."
-        "???" "No."
-        "???" "I'm wasting my time on YOU."
-        mc "What are you talking about?"
-        mc "That poem is not even for you, why are you acting so mad for this?"
-        mc "And give it back, please!"
-        "???" "Whatever, it doesn't worth anyway..."
-        "???" "But I warn you that you are going the wrong way..."
-        "???" "I can see it in this crappy poem."
-        mc "What?!"
-        mc "It's just a fucking poem, it doesn't change anything."
-        mc "Are you saying that the wrong way was entering in the Literature Club? Is that it?"
-        "???" "..."
-        "???" "Shut up!"
-        "???" "Look, just watch your back, ok?"
-        "???" "I'm outta here..."
-        pass
-    $ gtext = glitchtext(20)
-    "???" "{cps=60}[gtext]{/cps}{nw}"
+    "???" "..."
+    "???" "If you want an advice: Get away from some sort of girls."
+    mc "Who?"
+    "???" "I won't say it."
+    mc "I know a lot of girls, which ones are I supposed to get away from?"
+    "???" "I won't say it, damn it!"
+    "... ... ..."
+    "???" "Alright! If you want me to leave you alone, then so be it. I won't bother you anymore."
+    "???" "However, I won't protect you of anything if you're in danger."
+    menu:
+        "Fine...":
+            pass
+    "???" "Good bye!"
     show screen tear(20, 0.1, 0.1, 0, 40)
     hide monika
     play sound "sfx/s_kill_glitch1.ogg"
     pause 0.25
     stop sound
     hide screen tear
-    call hideconsole
-    mc "..."
-    pause 2.0
-    "Fuck."
-    "She's really a strange woman."
-    "Should I take that aware? Is something bad going to happen?"
-    stop sound
+    pause 0.5
+    mc "I don't need your protection, you know...!"
+    "..."
+    mc "Fuck!"
     pause 3.0
     
     stop music fadeout 2.0
-    scene bg bedroom dark
+    scene bg bedroom night
     with dissolve_scene_full
 
     "..."
-    "Wha-"
-    mc "Hmm... 6 AM. It's very early."
-    mc "Could I take the opportunity to go for a walk? Or sleep a bit more?"
-
+    mc "Hmm... 2 AM?"
+    mc "Damn it!"
+    mc "..."
+    mc "I'm gonna sleep."
+    scene black
+    with dissolve_scene_full
+    scene bedroom dark
+    with dissolve_scene_full
+    "6:30 AM"
+    mc "Yes!"
+    mc "Finally I'm having normal dreams!"
+    "*Grrrr~*"
+    mc "Eh? I'm hungry..."
+    "At this hour, the cafeteria must be open."
     menu:
+        "Could I go?"
 
-        "Take a morning walk":
+        "Yes":
             "Alright!"
             $ HKBShowButtons()
-            $ ch1_prev_activities_m = 0
-            $ stamina = 6
+            $ ch2_prev_activities_m = 0
+            $ stamina = 10
             $ hr_hour = 6
             $ park_closed = False
             $ cafe_closed = False
             $ library_closed = False
             $ gamestore_closed = False
-            jump ch1_prev_loop
-        "Sleep a bit more":
-            "..."
-            jump ch1_prev_go_sleep
+            jump ch2_prev_loop
+        "No":
+            mc "Oh, come on!"
+            jump ch2_prev_go_sleep
 
-label ch1_prev_loop:
+label ch2_prev_loop:
     while (stamina > 0) and (hr_hour <= 7):
         show screen freeroam_hud
         with Dissolve(.5)
         play music t5
-        if ch1_prev_activities_m == 0:
+        if ch2_prev_activities_m == 0:
             scene bg house morning
             with wipeleft_scene
             $ menutext = "Where should I go first?"
@@ -160,12 +129,16 @@ label ch1_prev_loop:
             "[menutext]"
 
             "Go to the park" if not park_closed:
-                $ ch1_prev_activities_m += 1
-                call ch1_prev_go_to_park
+                if ch1_battle_2_won == True:
+                    mc "I don't want to come back to the park for now..."
+                else:
+                    mc "I have a bad feeling about going there."
+                    mc "I'd better go somewhere else."
+                $ park_closed = True
                 pass
             "Go to the cafe" if not cafe_closed:
-                $ ch1_prev_activities_m += 1
-                call ch1_prev_go_to_cafe
+                $ ch2_prev_activities_m += 1
+                call ch2_prev_go_to_cafe
                 pass
             "Go to the gaming store" if not gamestore_closed:
                 mc "The game store is closed right now."
@@ -176,99 +149,107 @@ label ch1_prev_loop:
                 $ library_closed = True
                 pass
             "Go home":
-                jump ch1_prev_go_home
+                jump ch2_prev_go_home
                 pass
             "Go to school":
-                jump ch1_prev_go_play
+                jump ch2_prev_go_play
                 pass
         pass
-    jump ch1_prev_go_home
+    jump ch2_prev_go_home
 
-    label ch1_prev_go_to_park:
-        mc "Well then, let's have a walk in the park."
-        mc "I need to do some exercises anyway..."
-        scene bg park way morning
-        with wipeleft_scene
-        mc "Perfect!"
-        mc "Nobody is around~!"
-        hide screen freeroam_hud
-        with Dissolve(.5)
-        $ HKBShowButtons()
-        $ HKBHideButtons()
-        pause 1.0
-
-        call ch1_battle_1
-
-        $ HKBShowButtons()
-        mc "Phew! That was close..."
-        "..."
-        mc "Nobody is here."
-        mc "Not even a fucking cop!"
-        mc "One mistake and I could be so fucking dead!"
-        mc "Hmmm..."
-        mc "Let's just... take 'my rewards'..."
-        $ bag_inventory.add_item("jackknife", score=1)
-        "[player] received a Jackknife."
-        mc "Nice!!!"
-        if battle_extra_rewards_rate <= 5:
-            mc "!"
-            mc "Wow! Look at this!"
-            $ money += 1000
-            "[player] received $1000 additional."
-            $ bag_inventory.add_item("proteinbar", score=1)
-            "[player] received Protein bar."
-            mc "It's awesome!"
-        mc "Now I can handle myself against the bad guys."
-        "Well, let's get the fuck out of here before someone comes."
-        
-        $ park_closed = True
-        $ stamina -= 5
-
-        return
-
-    label ch1_prev_go_to_cafe:
-        mc "I'm hungry."
-        mc "I guess I'll take a sooner breakfast..."
+    label ch2_prev_go_to_cafe:
         scene bg cafe dark
         with wipeleft_scene
-        mc "Hmm..."
+        mc "..."
+        mc "Eh?"
+        "He is...?"
+        "Guy" "Hey [player]! What's up man?"
+        show ryoma at t11 zorder 1
+        mc "Ryoma?!"
+        "That guy is Ryoma. Fortunately my best friend between the most important boys in the entire school."
+        "We becamed friends since we teamed up in the soccer club, I was the defender and he was the scorer, I've used to give him assistences too."
+        "When I'm having problems with anybody from his circle, he always shows up to stop us and save my ass."
+        "He always does his best to make the convivence peacefully as possible. He doesn't a troublemaker like the other popular boys because he knows bullying people to feel important is a waste of time."
+        if backyard_check == True:
+            "Oh! Did I mention he and Camilla are the ones who always overprotecting me?"
+            "Their are my best dynamic duo..."
+        mcf1 "What are you doing here? I thought you'be still sleeping..."
+        mcf1 "And how is Sayori?"
+        mc "Nah, I slept sooner and woke up sooner too..."
+        mc "And Sayori is fine thank goodness."
+        mcf1 "It's nice to hear that. She's a pretty girl, you're lucky having her always at your side."
+        mc "Hehe, you got a point."
+        mcf1 "And what a coincidence, I was about to go to my club earlier to make preparatives. So I decided to have breakfast here."
+        mc "Nice."
+        mcf1 "Come on, choose anything you want, I'll pay."
+        mc "No, it's not neccesary, I will pay my food."
+        mcf1 "Don't worry about it, I have enough money to invite an entire group."
+        mc "If you say so..."
+        mcf1 "Now that we are here, tell me: How is that Literature Club that Monika founded?"
+        mc "Well..."
+        scene black
+        with dissolve_scene_full
+        scene bg cafe
+        with dissolve_scene_full
+        mcf1 "There's nothing better than a coffee and a ham & cheese toast..."
+        mc "Indeed."
+        mc "Thanks Ryoma."
+        mcf1 "Don't mention it."
+        mcf1 "Oh! I almost forgot..."
+        mcf1 "Before you entered to the Literature Club I was about to inviting you to my club, but..."
+        mc "Sorry about that."
+        mcf1 "Wait, I guess you can be a 'member' there at the same time..."
+        mcf1 "But there's a problem:"
+        mc "What?"
+        mcf1 "How your leg is?"
+        mc "This? I guess it's fixed."
+        mc "The accident was about 2 years ago, at the first year of rehabilitation I was able to run again, so I can do anything."
+        mc "Why are you asking?"
+        mcf1 "Well... the fact it's my club is..."
+        mcf1 "A Kick boxing Club."
+        mc "Oh, I see..."
+        mc "Well, I guess my leg is in conditions to beat people. But why should I join in?"
+        mcf1 "It's easy... First: We need some promotion, if people see someone has interests in the club activities they could be interested too."
+        mcf1 "And for some reason, the Literature Club got more attention when you joined in. But everybody is waiting for the Festival to see what the club 'really' offers."
+        mcf1 "Second: If you reach the Top of every \"Mini Tournament\", you will get some cash as reward."
+        mc "Aha!"
+        mc "Well, it sounds good."
         menu:
-            "What should I have for eat?"
+            "Should I join the Kickboxing Club? (I won't quit the Literature Club for this, it's just more activities and EXP farming included)"
 
-            "Coffee with milk & croissants - $250":
-                mc "..."
-                pause 5.0
-                $ mc_hp = mc_hp_max
-                $ mc_mp = mc_mp_max
-                "Oh man..."
-                "This was delicious!"
-                $ money -= 250
+            "Yes.":
+                mc "I'm in!"
+                mc "Also, I need to do some exercises."
+                mcf1 "Thank you very much [player]!"
+                mc "It's nothing."
+                mc "If the school has no problems about participating in two clubs at the same time, you can count on me."
+                mcf1 "Alright! It's official then."
+                mcf1 "Welcome to the Kick boxing Club!"
+                mc "Thanks Ryoma..."
+                $ accept_kickboxingclub_offer = "Yes"
                 pass
-            "Orange juice & ham and cheese toast - $280":
-                mc "..."
-                pause 5.0
-                $ mc_hp = mc_hp_max
-                $ mc_mp = mc_mp_max
-                "Oh man..."
-                "This was delicious!"
-                $ money -= 280
+            "I'm gonna think about it...":
+                mc "I need to check my agenda, but don't worry, I will consider your offer..."
+                mcf1 "Okay, I will wait for your answer then. The doors will be open for you if you decide to join in."
+                mc "Alright, thanks Ryoma."
+                mcf1 "Don't mention it."
+                $ accept_kickboxingclub_offer = "Maybe"
                 pass
-            "Strawberry smoothie & portion of cake - $320":
-                mc "..."
-                pause 5.0
-                $ mc_hp = mc_hp_max
-                $ mc_mp = mc_mp_max
-                "Oh man..."
-                "This was delicious!"
-                $ money -= 320
+            "No.":
+                mc "Sorry, but I'm affraid I don't have enough time."
+                mcf1 "Too bad..."
+                mcf1 "Well, if for some reason you change of mind, just tell me okay?"
+                mc "Okay, thanks fot the offer anyway Ryoma."
+                mcf1 "Don't mention it."
+                $ accept_kickboxingclub_offer = "No"
                 pass
-        "Alright, let's pay the bill and let's go somewhere else..."
+        mcf1 "Alright then... "
 
-        $ stamina += 3
+        $ stamina -= 1
 
         return
 
-label ch1_prev_go_home:
+label ch2_prev_go_home:
     stop music fadeout 2.0
     hide screen freeroam_hud
     with Dissolve(.5)
@@ -287,11 +268,11 @@ label ch1_prev_go_home:
     mc "Zzzzzzzzzzz..."
     scene black
     with dissolve_scene_full
-    jump ch1_prev_go_school
+    jump ch2_prev_go_school
 
 return
 
-label ch1_prev_go_sleep:
+label ch2_prev_go_sleep:
 
     "..."
     mc "Nah!"
@@ -300,11 +281,11 @@ label ch1_prev_go_sleep:
     mc "Zzzzzzzzzzzzz...."
     scene black
     with dissolve_scene_full
-    jump ch1_prev_go_school
+    jump ch2_prev_go_school
 
 return
 
-label ch1_prev_go_play:
+label ch2_prev_go_play:
     stop music fadeout 2.0
     hide screen freeroam_hud
     with Dissolve(.5)
@@ -321,11 +302,11 @@ label ch1_prev_go_play:
     mc "Now let's turn on the console and..."
     scene black
     with dissolve_scene_full
-    jump ch1_prev_go_school
+    jump ch2_prev_go_school
 
 return
 
-label ch1_prev_go_school:
+label ch2_prev_go_school:
     scene bg bedroom
     with wipeleft_scene
     pause 1.0
@@ -352,7 +333,7 @@ label ch1_prev_go_school:
             scene black
             with dissolve_scene_full
             pause 2.0
-            jump ch1_prev_go_schoolA
+            jump ch2_prev_go_schoolA
             pass
         "No, you'll arrive very late.":
             mc "Are you sure?"
@@ -365,7 +346,7 @@ label ch1_prev_go_school:
                     scene black
                     with dissolve_scene_full
                     pause 2.0
-                    jump ch1_prev_go_schoolA
+                    jump ch2_prev_go_schoolA
                 "Do what you want then!":
                     mc "Fuck you!"
                     mc "..."
@@ -373,9 +354,9 @@ label ch1_prev_go_school:
                     scene black
                     with wipeleft_scene
                     pause 0.5
-                    jump ch1_prev_go_schoolB
+                    jump ch2_prev_go_schoolB
 
-label ch1_prev_go_schoolA:
+label ch2_prev_go_schoolA:
     scene bg house
     with wipeleft_scene
     play music t2
@@ -406,10 +387,10 @@ label ch1_prev_go_schoolA:
     s 4r "Me either, hahaha~!"
     mc "Hahaha!"
     $ sayori_wait1 = True
-    jump ch1_prev_schooltime
+    jump ch2_prev_schooltime
 return
 
-label ch1_prev_go_schoolB:
+label ch2_prev_go_schoolB:
     scene bg residential_day
     with wipeleft_scene
     play music t2
@@ -425,10 +406,10 @@ label ch1_prev_go_schoolB:
     mc "Hush! Fuck this shit! I'll go to the fucking school anyway!"
     mc "I will wait for Sayori later."
     $ sayori_wait1 = False
-    jump ch1_prev_schooltime
+    jump ch2_prev_schooltime
 return
 
-label ch1_prev_schooltime:
+label ch2_prev_schooltime:
 
     scene bg class_day
     with wipeleft_scene
@@ -480,18 +461,18 @@ label ch1_prev_schooltime:
     with wipeleft_scene
     play music midnight_piano
     $ menutext = "Where should I go first?"
-    $ ch1_prev_activities_s = 0
+    $ ch2_prev_activities_s = 0
     $ sayori_found = False
     $ s_classroom_check = False
     $ mc_classroom_check = False
     $ backyard_check = False
     $ entrance_check = False
     $ roof_check = False
-    jump ch1_prev_schooltime1_loop
+    jump ch2_prev_schooltime1_loop
 
-label ch1_prev_schooltime1_loop:
+label ch2_prev_schooltime1_loop:
     while sayori_found == False:
-        if ch1_prev_activities_s == 0:
+        if ch2_prev_activities_s == 0:
             $ menutext = "Where should I go first?"
         else:
             $ menutext = "Where should I go next?"
@@ -500,43 +481,43 @@ label ch1_prev_schooltime1_loop:
 
             "My classroom" if not mc_classroom_check:
                 mc "What if she's looking for me in my classroom? Let's check it out."
-                $ ch1_prev_activities_s += 1
-                call ch1_prev_schooltime_loop_mcclassroom
+                $ ch2_prev_activities_s += 1
+                call ch2_prev_schooltime_loop_mcclassroom
                 pass
             "The backyard" if not backyard_check:
                 mc "Let's check the backyard... Sometimes I trend to go there."
-                $ ch1_prev_activities_s += 1
-                call ch1_prev_schooltime_loop_backyard
+                $ ch2_prev_activities_s += 1
+                call ch2_prev_schooltime_loop_backyard
                 pass
             "Sayori's classroom" if not s_classroom_check:
                 if backyard_check == True and sayori_wait1 == True:
                     mc "Camilla said she's could be in her classroom? Let's check it out."
                 else:
                     mc "Maybe she's still in her classroom? Let's check it out."
-                $ ch1_prev_activities_s += 1
-                call ch1_prev_schooltime_loop_sclassroom
+                $ ch2_prev_activities_s += 1
+                call ch2_prev_schooltime_loop_sclassroom
                 pass
             "The entrance" if not entrance_check:
                 if backyard_check == True and sayori_wait1 == False:
                     mc "Camilla said to check the entrance? Let's go then."
                 else:
                     mc "I don't know why, but I want to check the entrance."
-                $ ch1_prev_activities_s += 1
-                call ch1_prev_schooltime_loop_entrance
+                $ ch2_prev_activities_s += 1
+                call ch2_prev_schooltime_loop_entrance
                 pass
             #"The roof" if not roof_check:
             #    mc "It sounds stupid, but I want to check the building's roof... Well, here goes nothing."
-            #    $ ch1_prev_activities_s += 1
-            #    call ch1_prev_schooltime_loop_roof
+            #    $ ch2_prev_activities_s += 1
+            #    call ch2_prev_schooltime_loop_roof
             #    pass
             "Give up!":
                 mc "No..."
                 mc "I must find her!!!"
                 pass
         pass
-    jump ch1_prev_schooltime2
+    jump ch2_prev_schooltime2
 
-    label ch1_prev_schooltime_loop_sclassroom:
+    label ch2_prev_schooltime_loop_sclassroom:
         scene bg sayori classroom
         with wipeleft_scene
         if sayori_wait1 == True:
@@ -573,7 +554,7 @@ label ch1_prev_schooltime1_loop:
             pass
         return
 
-    label ch1_prev_schooltime_loop_mcclassroom:
+    label ch2_prev_schooltime_loop_mcclassroom:
         scene bg class_day
         with wipeleft_scene
 
@@ -581,7 +562,7 @@ label ch1_prev_schooltime1_loop:
         $ mc_classroom_check = True
         return
 
-    label ch1_prev_schooltime_loop_backyard:
+    label ch2_prev_schooltime_loop_backyard:
         scene bg school backyard
         with wipeleft_scene
 
@@ -643,7 +624,7 @@ label ch1_prev_schooltime1_loop:
         play music midnight_piano
         return
 
-    label ch1_prev_schooltime_loop_entrance:
+    label ch2_prev_schooltime_loop_entrance:
         scene bg school entrance
         with wipeleft_scene
 
@@ -682,7 +663,7 @@ label ch1_prev_schooltime1_loop:
         return
 
 
-label ch1_prev_schooltime2:
+label ch2_prev_schooltime2:
     $ HKBShowButtons()
     $ HKBHideButtons()
     $ bag_inventory.remove_item("schoollunch")

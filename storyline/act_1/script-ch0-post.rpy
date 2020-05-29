@@ -90,7 +90,7 @@ label ch0_post_loop:
         scene bg residential_day
         with wipeleft_scene
         $ stamina -= 3
-        #jump ch0_post_loop
+        $ park_closed = True
 
         return
 
@@ -134,7 +134,7 @@ label ch0_post_loop:
         scene bg residential_day
         with wipeleft_scene
         $ stamina -= 1
-        #jump ch0_post_loop
+        $ cafe_closed = True
 
         return
 
@@ -169,7 +169,6 @@ label ch0_post_loop:
         with wipeleft_scene
         $ stamina -= 1
         $ gamestore_closed = True
-        #jump ch0_post_loop
 
         return
 
@@ -180,7 +179,7 @@ label ch0_post_loop:
         if persistent.ytellyouherbookstore == True:
             "Let's go to the bookstore Yuri mentioned."
             "IT WORKED! HAHAHAHAHAHAHAHAHAHAHA! IT WORKS! THANKS MYSTERIOUS LADY!"
-            scene bg library day
+            scene bg library old
             with wipeleft_scene
             "Well, as I said before... Sayori could like happy stuff, Natsuki anime stuff, Yuri horror and complex stuff, and Monika about epiphany."
             "Oh yes, I remember everything, hehe~!"

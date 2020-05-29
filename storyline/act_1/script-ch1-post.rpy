@@ -6,6 +6,7 @@ label ch1_post:
     $ cafe_closed = False
     $ gamestore_closed = False
     $ library_closed = False
+    $ ch1_battle_2_won = False
     stop music fadeout 2.0
     scene bg house
     with wipeleft_scene
@@ -84,6 +85,7 @@ label ch1_post_loop:
                 mc "Well, I guess I must do it by myself."
                 call ch1_battle_2
                 $ HKBShowButtons()
+                $ ch1_battle_2_won = True
                 mc "Phew! That was close..."
                 $ bag_inventory.add_item("pistol", score=1)
                 "[player] received 9mm pistol."
@@ -177,6 +179,7 @@ label ch1_post_loop:
 
                 pass
             "Ignore the situation...":
+                $ ch1_battle_2_won = False
                 mc "..."
                 "He gone in the horizon."
                 "Let's get the fuck out of here!"
@@ -470,7 +473,6 @@ label ch1_post_loop:
             with wipeleft_scene
             mc "..."
             "Fuck! No Yuri signals..."
-            "Damn, I wanted to choose a book she likes."
             "Anyway, let's buy a book or let's get out of here."
             pass
         else:
@@ -573,9 +575,9 @@ label ch1_post_go_home:
         "..."
         mc "Let's write the poem."
     else:
+        "..."
         mc "You know what?"
-        mc "Fuck this shit."
-        mc "Let's just write a poem and I'm gonna sleep."
+        mc "Let's write the poem."
     scene bg bedroom
     with wipeleft_scene
     pause 1.0
