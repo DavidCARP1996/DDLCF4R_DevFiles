@@ -86,7 +86,7 @@ label ch0_main:
         mc "Eh? Oh... it's nothing, I'm just rambling because I didn't sleep well, that's all."
         s 1l "Thank goodness! The next time try to sleep a bit earlier, okay?"
         mc "Sure..."
-        "If she knows I ate that cookie I saved for her, she will be very, very upset..."
+        "If she knows I ate a cookie I saved for her, she will be very, very upset..."
         pass
 
     scene bg residential_day

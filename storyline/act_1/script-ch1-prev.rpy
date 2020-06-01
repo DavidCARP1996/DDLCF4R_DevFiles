@@ -2,7 +2,7 @@ label ch1_prev:
     stop music fadeout 2.0
     with dissolve_scene_full
     
-    scene bg bedroom night
+    scene bg bedroom_night
     with dissolve_scene_full
     mc "Fuck."
     mc "Look at the hour."
@@ -13,114 +13,115 @@ label ch1_prev:
     "After a few minutes trying to consilate the sleep, I'm success..."
     scene black
     with dissolve_scene_full
-    pause 3.0
-
-    show mask_2
-    show mask_3
-    with dissolve_scene_full
-    
-    play music m1
-    "But sudently, I'm in a weird dream. Again."
-    mc "Wait, again?!"
-    show screen tear(20, 0.1, 0.1, 0, 40)
-    play sound "sfx/s_kill_glitch1.ogg"
-    pause 0.25
-    stop sound
-    hide screen tear
-    show monika sdwf1 at t11 zorder 2
-    mc "You?!"
-    if persistent.ytellyouherbookstore == True:
-        "???" "... ... ..."
-        mc "Hey! I must thank you for this Save/Load script..."
-        mc "I just did something that made my day happy and..."
-        "???" "..."
-        mc "Ehm... Are you okay?"
-        "???" "What in the world are you doing?"
-        mc "What?"
-        "???" "Don't play dumb."
-        "???" "I know what have you done."
-        "???" "Did you changed your course of the bookstore because you wanted to see that violet-haired girl?!"
-        mc "And what's wrong with that?"
-        mc "You gave me this power to make the right decisions, right?"
-        "???" "You Idiot!"
-        "???" "You already fucked up that timeline. When you regret for that there is no going back anymore..."
-        mc "Well, maybe I will NEVER regret that!"
-        "???" "Hush! I knew you would be a motherfucking asshole!"
+    if persistent.monika_help == True:
+        pause 3.0
+        show mask_2
+        show mask_3
+        with dissolve_scene_full
+        play music m1
+        "But sudently, I'm in a weird dream. Again."
+        mc "Wait, again?!"
+        show screen tear(20, 0.1, 0.1, 0, 40)
+        play sound "sfx/s_kill_glitch1.ogg"
+        pause 0.25
+        stop sound
+        hide screen tear
+        show monika sdwf1 at t11 zorder 2
+        mc "You?!"
+        if persistent.ytellyouherbookstore == True:
+            "???" "... ... ..."
+            mc "Hey! I must thank you for this Save/Load script..."
+            mc "I just did something that made my day happy and..."
+            "???" "..."
+            mc "Ehm... Are you okay?"
+            "???" "What in the world are you doing?"
+            mc "What?"
+            "???" "Don't play dumb."
+            "???" "I know what have you done."
+            "???" "Did you changed your course of the bookstore because you wanted to see that violet-haired girl?!"
+            mc "And what's wrong with that?"
+            mc "You gave me this power to make the right decisions, right?"
+            "???" "You Idiot!"
+            "???" "You already fucked up that timeline. When you regret for that there is no going back anymore..."
+            mc "Well, maybe I will NEVER regret that!"
+            "???" "Hush! I knew you would be a motherfucking asshole!"
+            mc "..."
+            "???" "Anyway..."
+            pass
+        else:
+            "???" "Well..."
+            pass
+        "???" "Did you enjoy wasting your time writing a poem?"
+        "???" "It's almost time to wake up."
+        "???" "I feel bad for your misserable life."
+        "???" "You weirdo freak."
+        mc "Was that insult so neccesary?"
+        "???" "Yes."
+        "???" "But listen."
+        if poemwinner[0] == "Monika":
+            "???" "Hmmm...?"
+            "???" "Wow!"
+            "???" "Nice!"
+            "???" "I didn't know you were very good with poems."
+            "???" "Seems like I was right choosing you~!"
+            mc "What are you talking about?"
+            mc "That poem is not even for you!"
+            mc "Give it back, please!"
+            "???" "Okay~... Hehe~"
+            "???" "You know? You're going in the right way..."
+            "???" "This poem is the proof of that."
+            mc "What?!"
+            mc "It's just a fucking poem, it doesn't change anything."
+            mc "Are you saying that the right way was entering in the Literature Club? Is that it?"
+            "???" "..."
+            "???" "Shut up!"
+            "???" "Even if you're an good poet, looks like you're still an idiot."
+            "???" "Look, just watch your back, ok?"
+            "???" "I'll see you later..."
+            pass
+        else:
+            "???" "Hmmm..."
+            "???" "I see."
+            "???" "You was just wasting your time."
+            "???" "No."
+            "???" "I'm wasting my time on YOU."
+            mc "What are you talking about?"
+            mc "That poem is not even for you, why are you acting so mad for this?"
+            mc "And give it back, please!"
+            "???" "Whatever, it doesn't worth anyway..."
+            "???" "But I warn you that you are going the wrong way..."
+            "???" "I can see it in this crappy poem."
+            mc "What?!"
+            mc "It's just a fucking poem, it doesn't change anything."
+            mc "Are you saying that the wrong way was entering in the Literature Club? Is that it?"
+            "???" "..."
+            "???" "Shut up!"
+            "???" "Look, just watch your back, ok?"
+            "???" "I'm outta here..."
+            pass
+        $ gtext = glitchtext(20)
+        "???" "{cps=60}[gtext]{/cps}{nw}"
+        show screen tear(20, 0.1, 0.1, 0, 40)
+        hide monika
+        play sound "sfx/s_kill_glitch1.ogg"
+        pause 0.25
+        stop sound
+        hide screen tear
+        call hideconsole
         mc "..."
-        "???" "Anyway..."
+        pause 2.0
+        "Fuck."
+        "She's really a strange woman."
+        "Should I take that aware? Is something bad going to happen?"
+        stop sound
+        pause 3.0
+        stop music fadeout 2.0
         pass
     else:
-        "???" "Well..."
         pass
-    "???" "Did you enjoy wasting your time writing a poem?"
-    "???" "It's almost time to wake up."
-    "???" "I feel bad for your misserable life."
-    "???" "You weirdo freak."
-    mc "Was that insult so neccesary?"
-    "???" "Yes."
-    "???" "But listen."
-    if poemwinner[0] == "Monika":
-        "???" "Hmmm...?"
-        "???" "Wow!"
-        "???" "Nice!"
-        "???" "I didn't know you were very good with poems."
-        "???" "Seems like I was right choosing you~!"
-        mc "What are you talking about?"
-        mc "That poem is not even for you!"
-        mc "Give it back, please!"
-        "???" "Okay~... Hehe~"
-        "???" "You know? You're going in the right way..."
-        "???" "This poem is the proof of that."
-        mc "What?!"
-        mc "It's just a fucking poem, it doesn't change anything."
-        mc "Are you saying that the right way was entering in the Literature Club? Is that it?"
-        "???" "..."
-        "???" "Shut up!"
-        "???" "Even if you're an good poet, looks like you're still an idiot."
-        "???" "Look, just watch your back, ok?"
-        "???" "I'll see you later..."
-        pass
-    else:
-        "???" "Hmmm..."
-        "???" "I see."
-        "???" "You was just wasting your time."
-        "???" "No."
-        "???" "I'm wasting my time on YOU."
-        mc "What are you talking about?"
-        mc "That poem is not even for you, why are you acting so mad for this?"
-        mc "And give it back, please!"
-        "???" "Whatever, it doesn't worth anyway..."
-        "???" "But I warn you that you are going the wrong way..."
-        "???" "I can see it in this crappy poem."
-        mc "What?!"
-        mc "It's just a fucking poem, it doesn't change anything."
-        mc "Are you saying that the wrong way was entering in the Literature Club? Is that it?"
-        "???" "..."
-        "???" "Shut up!"
-        "???" "Look, just watch your back, ok?"
-        "???" "I'm outta here..."
-        pass
-    $ gtext = glitchtext(20)
-    "???" "{cps=60}[gtext]{/cps}{nw}"
-    show screen tear(20, 0.1, 0.1, 0, 40)
-    hide monika
-    play sound "sfx/s_kill_glitch1.ogg"
-    pause 0.25
-    stop sound
-    hide screen tear
-    call hideconsole
-    mc "..."
-    pause 2.0
-    "Fuck."
-    "She's really a strange woman."
-    "Should I take that aware? Is something bad going to happen?"
-    stop sound
-    pause 3.0
-    
-    stop music fadeout 2.0
-    scene bg bedroom dark
-    with dissolve_scene_full
 
+    scene bg bedroom_dark
+    with dissolve_scene_full
     "..."
     "Wha-"
     mc "Hmm... 6 AM. It's very early."
@@ -149,11 +150,11 @@ label ch1_prev_loop:
         with Dissolve(.5)
         play music t5
         if ch1_prev_activities_m == 0:
-            scene bg house morning
+            scene bg house_morning
             with wipeleft_scene
             $ menutext = "Where should I go first?"
         else:
-            scene bg residential morning
+            scene bg residential_morning
             with wipeleft_scene
             $ menutext = "Where should I go next?"
         menu:
@@ -187,7 +188,7 @@ label ch1_prev_loop:
     label ch1_prev_go_to_park:
         mc "Well then, let's have a walk in the park."
         mc "I need to do some exercises anyway..."
-        scene bg park way morning
+        scene bg park_way_morning
         with wipeleft_scene
         mc "Perfect!"
         mc "Nobody is around~!"
@@ -229,7 +230,7 @@ label ch1_prev_loop:
     label ch1_prev_go_to_cafe:
         mc "I'm hungry."
         mc "I guess I'll take a sooner breakfast..."
-        scene bg cafe dark
+        scene bg cafe_dark
         with wipeleft_scene
         mc "Hmm..."
         menu:
@@ -283,7 +284,7 @@ label ch1_prev_go_home:
     $ HKBShowButtons()
     $ HKBHideButtons()
     play sound click
-    scene bg bedroom dark
+    scene bg bedroom_dark
     mc "Zzzzzzzzzzz..."
     scene black
     with dissolve_scene_full
@@ -452,7 +453,7 @@ label ch1_prev_schooltime:
     mc "Oh! It's time..."
     mc "Let's go to the dining room."
 
-    scene bg school dining room
+    scene bg school_dining_room
     with wipeleft_scene
 
     mc "Here we are..."
@@ -476,7 +477,7 @@ label ch1_prev_schooltime:
         pass
     $ bag_inventory.add_item("schoollunch", score=1)
 
-    scene bg school ladder1
+    scene bg school_stairs1
     with wipeleft_scene
     play music midnight_piano
     $ menutext = "Where should I go first?"
@@ -537,7 +538,7 @@ label ch1_prev_schooltime1_loop:
     jump ch1_prev_schooltime2
 
     label ch1_prev_schooltime_loop_sclassroom:
-        scene bg sayori classroom
+        scene bg sayori_classroom
         with wipeleft_scene
         if sayori_wait1 == True:
             mc "She must be here-"
@@ -582,7 +583,7 @@ label ch1_prev_schooltime1_loop:
         return
 
     label ch1_prev_schooltime_loop_backyard:
-        scene bg school backyard
+        scene bg school_backyard
         with wipeleft_scene
 
         "No Sayori signals."
@@ -644,7 +645,7 @@ label ch1_prev_schooltime1_loop:
         return
 
     label ch1_prev_schooltime_loop_entrance:
-        scene bg school entrance
+        scene bg school_entrance
         with wipeleft_scene
 
         "..."
@@ -720,7 +721,7 @@ label ch1_prev_schooltime2:
         "Go pick up Sayori":
             mc "Fine, let's pick up her first and then let's go to the club."
 
-            scene bg sayori classroom
+            scene bg sayori_classroom
             with wipeleft_scene
 
             mc "Hello~?"

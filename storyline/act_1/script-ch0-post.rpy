@@ -65,7 +65,7 @@ label ch0_post_loop:
     label ch0_go_to_park:
         mc "Well then, let's have a walk in the park."
         mc "I need to do some exercises anyway..."
-        scene bg park way
+        scene bg park_way
         with wipeleft_scene
         mc "Well, let's take 20 laps on the circuit."
         pause 1.0
@@ -141,7 +141,7 @@ label ch0_post_loop:
     label ch0_go_to_gaming_store:
         mc "I want to see that game I've looking for so long."
         mc "Let's check the gaming store if it's available to buy..."
-        scene bg gaming store
+        scene bg gamingstore
         with wipeleft_scene
         mc "Hmm..."
         "Here it is!"
@@ -179,7 +179,7 @@ label ch0_post_loop:
         if persistent.ytellyouherbookstore == True:
             "Let's go to the bookstore Yuri mentioned."
             "IT WORKED! HAHAHAHAHAHAHAHAHAHAHA! IT WORKS! THANKS MYSTERIOUS LADY!"
-            scene bg library old
+            scene bg library_old
             with wipeleft_scene
             "Well, as I said before... Sayori could like happy stuff, Natsuki anime stuff, Yuri horror and complex stuff, and Monika about epiphany."
             "Oh yes, I remember everything, hehe~!"
@@ -217,7 +217,7 @@ label ch0_post_loop:
             "But first, I must choose the best books what I can..."
             pass
         else:
-            scene bg library day
+            scene bg library
             with wipeleft_scene
             "If I want to write a good poem, first I must read something inspirative."
             "But... I don't know what kind of stuffs could like the girls of the club."
@@ -349,7 +349,7 @@ label ch0_post_loop:
             scene black
             with wipeleft_scene
             pause 2.0
-            show bg yuri house
+            show bg yuri_house
             with wipeleft_scene
 
             show yuri 4e at t11 zorder 2
@@ -406,14 +406,14 @@ label ch0_go_home:
     with wipeleft_scene
     pause 1.0
     play sound click
-    scene bg bedroom dark
+    scene bg bedroom_dark
     mc "Yeah!"
     mc "Let's do that poem shit another time..."
     mc "Zzzzzzzzzzz..."
     scene black
     with dissolve_scene_full
     pause 1.0
-    scene bg bedroom dark
+    scene bg bedroom_dark
     with dissolve_scene_full
     "..."
     mc "Hm? 23 PM?"

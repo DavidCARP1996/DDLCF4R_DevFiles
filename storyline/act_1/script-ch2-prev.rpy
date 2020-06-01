@@ -10,83 +10,85 @@ label ch2_prev:
     "If only I had bought that game..."
     mc "It's 22 PM."
     mc "I think I'd better go to sleep. I don't have such interesting games in my library to play."
-    pause 1.0
+    pause 0.5
     play sound click
-    scene bg bedroom dark
+    scene bg bedroom_dark
+    pause 0.5
     scene black
     with dissolve_scene_full
-    pause 2.0
-
-    show mask_2
-    show mask_3
-    with dissolve_scene_full
-    
-    play music m1
-    "Once again, I'm having this dream..."
-    mc "Hey, mysterious lady! I know you're behind of this. Show yourself because I want to know what's your real purpose..."
-    show screen tear(20, 0.1, 0.1, 0, 40)
-    play sound "sfx/s_kill_glitch1.ogg"
-    pause 0.25
-    stop sound
-    hide screen tear
-    show monika sdwf1 at t11 zorder 2
-    "???" "Did you call me?"
-    mc "Yes."
-    mc "You know, I obviously know what's my purpose, but don't you think this kind of \"dreams\" aren't so neccesary?"
-    mc "I can't even have an decent dream because everytime I sleep I'm spawned here..."
-    mc "I want at least ONCE have a dream with Yuri{nw}"
-    "???" "Enough!"
-    "???" "I understand what do you mean."
-    "???" "But I can't allow you this pleasure. Not until I fulfill my objective."
-    mc "Oh come on!"
-    mc "I'm getting tired of all this, and... well, if you tell me exactly what's your objective without beign so mysterious..."
-    mc "I could possibly help to you fulfill your objective faster."
-    "???" "You shouldn't have to know that."
-    mc "Shit..."
-    if ch1_battle_2_won == True:
-        "???" "At least thank me for saving you of beign arrested."
-        mc "I knew it!"
-        mc "Thanks anyway, and sorry for not thanking you before, I was disconcerted for the suddently situation."
-        "???" "No problem. I will let it pass for now."
+    if persistent.monika_help == True:
+        pause 2.0
+        show mask_2
+        show mask_3
+        with dissolve_scene_full
+        play music m1
+        "Once again, I'm having this dream..."
+        mc "Hey, mysterious lady! I know you're behind of this. Show yourself because I want to know what's your real purpose..."
+        show screen tear(20, 0.1, 0.1, 0, 40)
+        play sound "sfx/s_kill_glitch1.ogg"
+        pause 0.25
+        stop sound
+        hide screen tear
+        show monika sdwf1 at t11 zorder 2
+        "???" "Did you call me?"
+        mc "Yes."
+        mc "Don't you think this kind of \"dreams\" are so unneccesary?"
+        mc "I can't even have an decent dream because everytime I sleep I'm spawned here..."
+        mc "I want at least ONCE have a dream with Yuri{nw}"
+        "???" "Enough!"
+        "???" "I understand what do you mean."
+        "???" "But I can't allow you this pleasure. Not until I fulfill my objective."
+        mc "Oh come on!"
+        mc "I'm getting tired of all this, and... well, if at least you tell me exactly what's your objective without beign so mysterious..."
+        mc "I could possibly help to you fulfill your objective faster."
+        "???" "You shouldn't have to know that."
+        mc "Shit..."
+        if ch1_battle_2_won == True:
+            "???" "At least thank me for saving you of beign arrested."
+            mc "I knew it!"
+            mc "Thanks anyway, and sorry for not thanking you before, I was disconcerted for the suddently situation."
+            "???" "No problem. I will let it pass for now."
+        else:
+            pass
+        "???" "..."
+        "???" "If you want an advice: Get away from some sort of girls."
+        mc "Who?"
+        "???" "I won't say it."
+        mc "I know a lot of girls, which ones are I supposed to get away from?"
+        "???" "I won't say it, damn it!"
+        "... ... ..."
+        $ persistent.monika_help = False
+        "???" "Alright! If you want me to leave you alone, then so be it. I won't bother you anymore."
+        "???" "However, from now on I won't protect you of anything if you're in danger."
+        menu:
+            "Fine...":
+                pass
+        "???" "Good bye!"
+        show screen tear(20, 0.1, 0.1, 0, 40)
+        hide monika
+        play sound "sfx/s_kill_glitch1.ogg"
+        pause 0.25
+        stop sound
+        hide screen tear
+        pause 1.0
+        mc "I don't need your protection, you hear...?"
+        "..."
+        mc "Fuck!"
+        pause 3.0
+        stop music fadeout 2.0
+        scene bg bedroom_night
+        with dissolve_scene_full
+        "..."
+        mc "Hmm... 2 AM?"
+        mc "Damn it!"
+        mc "..."
+        mc "I'm gonna sleep."
+        scene black
+        with dissolve_scene_full
+        pass
     else:
         pass
-    "???" "..."
-    "???" "If you want an advice: Get away from some sort of girls."
-    mc "Who?"
-    "???" "I won't say it."
-    mc "I know a lot of girls, which ones are I supposed to get away from?"
-    "???" "I won't say it, damn it!"
-    "... ... ..."
-    "???" "Alright! If you want me to leave you alone, then so be it. I won't bother you anymore."
-    "???" "However, I won't protect you of anything if you're in danger."
-    menu:
-        "Fine...":
-            pass
-    "???" "Good bye!"
-    show screen tear(20, 0.1, 0.1, 0, 40)
-    hide monika
-    play sound "sfx/s_kill_glitch1.ogg"
-    pause 0.25
-    stop sound
-    hide screen tear
-    pause 0.5
-    mc "I don't need your protection, you know...!"
-    "..."
-    mc "Fuck!"
-    pause 3.0
-    
-    stop music fadeout 2.0
-    scene bg bedroom night
-    with dissolve_scene_full
-
-    "..."
-    mc "Hmm... 2 AM?"
-    mc "Damn it!"
-    mc "..."
-    mc "I'm gonna sleep."
-    scene black
-    with dissolve_scene_full
-    scene bedroom dark
+    scene bedroom
     with dissolve_scene_full
     "6:30 AM"
     mc "Yes!"
@@ -158,7 +160,7 @@ label ch2_prev_loop:
     jump ch2_prev_go_home
 
     label ch2_prev_go_to_cafe:
-        scene bg cafe dark
+        scene bg cafe_dark
         with wipeleft_scene
         mc "..."
         mc "Eh?"
@@ -212,6 +214,7 @@ label ch2_prev_loop:
         mcf1 "It's easy... First: We need some promotion, if people see someone has interests in the club activities they could be interested too."
         mcf1 "And for some reason, the Literature Club got more attention when you joined in. But everybody is waiting for the Festival to see what the club 'really' offers."
         mcf1 "Second: If you reach the Top of every \"Mini Tournament\", you will get some cash as reward."
+        mcf1 "And Third: We don't have the same schedule like the Literature Club, you can go there after school if you want, we have three schedules."
         mc "Aha!"
         mc "Well, it sounds good."
         menu:
@@ -226,6 +229,7 @@ label ch2_prev_loop:
                 mcf1 "Alright! It's official then."
                 mcf1 "Welcome to the Kick boxing Club!"
                 mc "Thanks Ryoma..."
+                mcf1 "You're welcome bro."
                 $ accept_kickboxingclub_offer = "Yes"
                 pass
             "I'm gonna think about it...":
@@ -243,8 +247,47 @@ label ch2_prev_loop:
                 mcf1 "Don't mention it."
                 $ accept_kickboxingclub_offer = "No"
                 pass
-        mcf1 "Alright then... "
+        mcf1 "Alright then... See you later?"
+        if accept_kickboxingclub_offer == "Yes":
+            mc "Yeah Ryoma, I'll see you in the Kickboxing club."
+            pass
+        else:
+            mc "Yeah Ryoma, I'll see you later."
+        mc "Oh, wait!"
+        mc "Why are you going to your club so sooner?"
+        mcf1 "You see, we have our club in an abandoned garage in addition to the school gym."
+        mcf1 "That is you must go to that garage if you're in the Literature Club in our school hour."
+        mcf1 "I'm going sooner because I need to clean some mess up, that's all."
+        mc "Oh, I see..."
+        if accept_kickboxingclub_offer != "No":
+            mcf1 "Come with me if you want, and then I can teach you some tips about our club. And in the way you can go to school sooner."
+            mcf1 "Unless you want to know all of this later..."
+            menu:
+                mc "Well..."
 
+                "Go with Ryoma.":
+                    mcf1 "Nice! Then let's go..."
+                    mc "Yeah!"
+                    jump ch2_prev_go_fightingclub
+                    pass
+                "Pass.":
+                    mc "Sorry..."
+                    mcf1 "Don't worry, we can do this afterschool if you want."
+                    pass
+                "I don't know, I need to pick up Sayori in time to go to school.":
+                    mcf1 "Shit, that's true!"
+                    mcf1 "She's been overslepting more frequently, isn't? You should do something at the respect."
+                    "Fuck, he's true... But, it's not like I don't want to help her, she's just retracts and says \"I'm okay\" everytime I asking her and deflects the subject..."
+                    mc "I'm doing my best, but she says everytime that she's fine..."
+                    mcf1 "I see..."
+                    mcf1 "Well, take good care of her, and come to my club afterschool if you want."
+                    mc "Alright!"
+                    pass
+        else:
+            pass
+        mc "Thanks again..."
+        mcf1 "Don't mention it."
+        mcf1 "See you later!"
         $ stamina -= 1
 
         return
@@ -272,19 +315,6 @@ label ch2_prev_go_home:
 
 return
 
-label ch2_prev_go_sleep:
-
-    "..."
-    mc "Nah!"
-    mc "I'm fucking sleepy..."
-    mc "Let's just... sleep a bit more... okay...?"
-    mc "Zzzzzzzzzzzzz...."
-    scene black
-    with dissolve_scene_full
-    jump ch2_prev_go_school
-
-return
-
 label ch2_prev_go_play:
     stop music fadeout 2.0
     hide screen freeroam_hud
@@ -304,6 +334,10 @@ label ch2_prev_go_play:
     with dissolve_scene_full
     jump ch2_prev_go_school
 
+return
+
+label ch2_prev_go_fightingclub:
+    mcf1 "Here we are!"
 return
 
 label ch2_prev_go_school:
@@ -457,7 +491,7 @@ label ch2_prev_schooltime:
         pass
     $ bag_inventory.add_item("schoollunch", score=1)
 
-    scene bg school ladder1
+    scene bg school_stairs1
     with wipeleft_scene
     play music midnight_piano
     $ menutext = "Where should I go first?"

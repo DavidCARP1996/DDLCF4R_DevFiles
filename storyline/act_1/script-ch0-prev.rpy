@@ -1,7 +1,7 @@
 label ch0_prev:
     stop music fadeout 2.0
     with dissolve_scene_full
-    scene bg bedroom night
+    scene bg bedroom_night
     with dissolve_scene_full
     mc "Fuck!"
     mc "Look at the hour!"
