@@ -342,7 +342,7 @@ label ch2_main:
     return
 
 
-label ch2_end:
+label ch2_main_end:
     stop music fadeout 1.0
     scene bg club_day
     show monika 4b at t32 zorder 2

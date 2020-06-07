@@ -1,12 +1,12 @@
-label ch1_post:
-    $ ch1_post_activities = 0
+label ch2_post:
+    $ ch2_post_activities = 0
     $ stamina = 10
     $ hr_hour = 17
     $ park_closed = False
     $ cafe_closed = False
     $ gamestore_closed = False
     $ library_closed = False
-    $ ch1_battle_2_won = False
+    $ ch2_battle_2_won = False
     stop music fadeout 2.0
     scene bg house
     with wipeleft_scene
@@ -18,12 +18,12 @@ label ch1_post:
     "And if you want, we can do something else..."
     pass
 
-label ch1_post_loop:
+label ch2_post_loop:
     while (stamina > 0) and (hr_hour <= 20):
         show screen freeroam_hud
         with Dissolve(.5)
         play music t5
-        if ch1_post_activities == 0:
+        if ch2_post_activities == 0:
             $ menutext = "Where should I go first?"
         else:
             $ menutext = "Where should I go next?"
@@ -31,29 +31,29 @@ label ch1_post_loop:
             "[menutext]"
 
             "Go to the park" if not park_closed:
-                $ ch1_post_activities += 1
-                call ch1_post_go_to_park
+                $ ch2_post_activities += 1
+                call ch2_post_go_to_park
                 pass
             "Go to the cafe" if not cafe_closed:
-                $ ch1_post_activities += 1
-                call ch1_post_go_to_cafe
+                $ ch2_post_activities += 1
+                call ch2_post_go_to_cafe
                 pass
             "Go to the gaming store" if not gamestore_closed:
-                $ ch1_post_activities += 1
-                call ch1_post_go_to_gaming_store
+                $ ch2_post_activities += 1
+                call ch2_post_go_to_gaming_store
                 pass
             "Go to the library" if not library_closed:
-                $ ch1_post_activities += 1
-                call ch1_post_go_to_library
+                $ ch2_post_activities += 1
+                call ch2_post_go_to_library
                 pass
             "Go home":
-                jump ch1_post_go_home
+                jump ch2_post_go_home
                 pass
 
         pass
-    jump ch1_post_go_home
+    jump ch2_post_go_home
 
-    label ch1_post_go_to_park:
+    label ch2_post_go_to_park:
         mc "Well then, let's have a walk in the park."
         mc "I need to do some exercises anyway..."
         scene bg park_way
@@ -83,9 +83,9 @@ label ch1_post_loop:
                 hide screen freeroam_hud
                 with Dissolve(.5)
                 mc "Well, I guess I must do it by myself."
-                call ch1_battle_2
+                call ch2_battle_2
                 $ HKBShowButtons()
-                $ ch1_battle_2_won = True
+                $ ch2_battle_2_won = True
                 mc "Phew! That was close..."
                 $ bag_inventory.add_item("pistol", score=1)
                 "[player] received 9mm pistol."
@@ -109,7 +109,7 @@ label ch1_post_loop:
                     $ gtext2 = glitchtext(80)
                     "[gtext]" "{cps=60}[gtext2]{/cps}{nw}"
                     show screen tear(20, 0.1, 0.1, 0, 40)
-                    play sound "sfx/s_kill_glitch1.ogg"
+                    play sound "sfx/s_kill_glitch2.ogg"
                     pause 0.25
                     stop sound
                     hide screen tear
@@ -169,7 +169,7 @@ label ch1_post_loop:
                     m 1d "[player], are you okay?"
                     mc "Yes Monika, thanks..."
                     mc "I'm so sorry for making you spend $5000 on me."
-                    if ch1_choice == "mc":
+                    if ch2_choice == "mc":
                         mc "I feel worse for having treated you so badly at the club."
                         "I said it so shamefully, wanting to cry. Seriously, I was an asshole... What I've been thinking?!"
                     m 2e "Hahahaha~! Don't worry about that, it was nothing after all..."
@@ -231,7 +231,7 @@ label ch1_post_loop:
 
                 pass
             "Ignore the situation...":
-                $ ch1_battle_2_won = False
+                $ ch2_battle_2_won = False
                 mc "..."
                 "He gone in the horizon."
                 "Let's get the fuck out of here!"
@@ -242,9 +242,9 @@ label ch1_post_loop:
         $ park_closed = True
         return
 
-    label ch1_post_go_to_cafe:
+    label ch2_post_go_to_cafe:
         mc "Hmm..."
-        $ ch1_winner = poemwinner[0].capitalize()
+        $ ch2_winner = poemwinner[0].capitalize()
         if poemwinner[0] == "Sayori" and backyard_check == False:
             $ menutext2 = "Should I invite Sayori?"
         else:
@@ -262,7 +262,7 @@ label ch1_post_loop:
                 s "Thank you very much for taking me to eat [player]!"
                 s 4bs "That's why you are my favourite person in the entire World!"
                 mc "Hehe-! If you say so..."
-                if ch1_winner == "Yuri":
+                if ch2_winner == "Yuri":
                     s "So...What do you think about Yuri?"
                     mc "I...I... Why are you asking such thing?!"
                     s "Sorry, I thought you and she..."
@@ -299,7 +299,7 @@ label ch1_post_loop:
                             mc "-!"
                             pass
                     pass
-                elif ch1_winner == "Natsuki":
+                elif ch2_winner == "Natsuki":
                     s "So...What do you think about Natsuki?"
                     mc "I... Why are you asking such thing?!"
                     s "Sorry, I thought you and she..."
@@ -329,7 +329,7 @@ label ch1_post_loop:
                             mc "Yes."
                             pass
                     pass
-                elif ch1_winner == "Monika":
+                elif ch2_winner == "Monika":
                     s "So...What do you think about Monika?"
                     mc "W-Why are you asking such thing?!"
                     s "Sorry, I thought you and she..."
@@ -350,7 +350,7 @@ label ch1_post_loop:
                             mc "Yep."
                             s "What a meanie..."
                             pass
-                        "I don't know if she wants to talk to me anymore after... you know." if ch1_choose == "mc":
+                        "I don't know if she wants to talk to me anymore after... you know." if ch2_choose == "mc":
                             s "Oh, don't worry about that. She already forgiven you, don't you remember?"
                             mc "Do you think so?"
                             s "Yes! She's a nice person, with a big heart."
@@ -402,14 +402,14 @@ label ch1_post_loop:
                 mc "Sure!"
                 pass
             
-            "[ch1_winner]" if poemwinner[0] != "Sayori": # Cita con Yuri/Natsuki/Monika dependiendo de cuál ruta elegiste al escribir el poema.
+            "[ch2_winner]" if poemwinner[0] != "Sayori": # Cita con Yuri/Natsuki/Monika dependiendo de cuál ruta elegiste al escribir el poema.
                 mc "It's not bad idea after all... I can get more chances to know her better!"
                 mc "I feel bad about not inviting Sayori, but my wallet is not so big, you know..."
                 mc "I'm gonna call her so we can meet in the cafe."
                 scene bg cafe
                 with wipeleft_scene
-                if ch1_winner == "Yuri": # Cita con Yuri
-                    if ch1_choice == "yuri":
+                if ch2_winner == "Yuri": # Cita con Yuri
+                    if ch2_choice == "yuri":
                         show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y 2bc "If-If you don't mind, I brought a book with me... I mean, if you want to read something while we're waiting for our food."
@@ -438,7 +438,7 @@ label ch1_post_loop:
                                 y "Umm..."
                                 y 2bq "Who starts first?"
                                 pass
-                    elif ch1_choice == "natsuki":
+                    elif ch2_choice == "natsuki":
                         show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y "I-I hope the thing what happened in the club doesn't..."
@@ -460,7 +460,7 @@ label ch1_post_loop:
                         mc "Hmm... Maybe you're right."
                         mc "Well, how much do you know about her?"
                         pass
-                    elif ch1_choice == "mc":
+                    elif ch2_choice == "mc":
                         show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y "I-I hope the thing what happened in the club doesn't..."
@@ -506,10 +506,10 @@ label ch1_post_loop:
                     y "I hope we can repeat it again someday..."
                     mc "Me too Yuri."
                     pass
-                elif ch1_winner == "Natsuki": # Cita con Natsuki
+                elif ch2_winner == "Natsuki": # Cita con Natsuki
                     scene bg cafe
                     with wipeleft_scene
-                    if ch1_choice == "yuri":
+                    if ch2_choice == "yuri":
                         n "Hmph!"
                         n "Don't think I came here because you like the idea."
                         n "I guess you owe me an apology."
@@ -523,7 +523,7 @@ label ch1_post_loop:
                         n "Whatever, just make our order quick, okay?"
                         mc "Okaaay..."
                         pass
-                    elif ch1_choice == "mc":
+                    elif ch2_choice == "mc":
                         n "I can't believe you dare to inviting me to eat after you yelled at us in the club."
                         n "What a hypocrite!"
                         mc "Listen, I'm very ashamed for that. Okay?"
@@ -541,7 +541,7 @@ label ch1_post_loop:
                         mc "You're welcome."
                         pass
                     pass
-                elif ch1_winner == "Monika": # Cita con Monika
+                elif ch2_winner == "Monika": # Cita con Monika
                     scene bg cafe
                     with wipeleft_scene
                     m "[player]! Thanks for inviting me for a coffee~!"
@@ -647,7 +647,7 @@ label ch1_post_loop:
 
         return
 
-    label ch1_post_go_to_gaming_store:
+    label ch2_post_go_to_gaming_store:
         mc "I want to see that game I've looking for so long."
         mc "Let's check the gaming store if it's available to buy..."
         scene bg gamingstore
@@ -694,7 +694,7 @@ label ch1_post_loop:
 
         return
 
-    label ch1_post_go_to_library:
+    label ch2_post_go_to_library:
         mc "Let's go to a library."
 
         if persistent.ytellyouherbookstore == True:
@@ -790,7 +790,7 @@ label ch1_post_loop:
 
         return
 
-label ch1_post_go_home:
+label ch2_post_go_home:
     stop music fadeout 2.0
     hide screen freeroam_hud
     $ HKBShowButtons()

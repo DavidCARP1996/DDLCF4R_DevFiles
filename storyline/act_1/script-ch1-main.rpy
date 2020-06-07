@@ -244,13 +244,13 @@ label ch1_main_end:
     "Natsuki suddenly stands up."
     "Oh-oh!"
     "If Natsuki dares to do something bad to Yuri, I will..."
-    "No!{p} Let's keep listening to them and wait where will it go."
+    "No! {p}Let's keep listening to them and wait where will it go."
     show yuri at t21 zorder 2
     show natsuki at f22 zorder 3
     n 4y "Oh?"
     n "I didn't realize you were so invested in trying to impress our new member, Yuri."
     play music t7
-    "What?{p} I mean, I hope so. That means she's really interested on me... uhuhu~!"
+    "What? {p}I mean, I hope so. That means she's really interested on me... uhuhu~!"
     show natsuki at t22 zorder 2
     show yuri at f21 zorder 3
     y 1n "E-Eh?!"
@@ -261,9 +261,9 @@ label ch1_main_end:
     "It's gonna get ugly..."
     y 2r "Maybe you're just jealous that [player] appreciates my advice more than he appreciated yours!"
     show yuri at t21 zorder 2
-    show natsuki at f22 zorder 3
+    show natsuki 1e at f22 zorder 3
     "Well, she got a point..."
-    n 1e "Huh! And how do you know he didn't appreciate {i}my{/i} advice more?"
+    n "Huh! And how do you know he didn't appreciate {i}my{/i} advice more?"
     n "Are you that full of yourself?"
     show natsuki at t22 zorder 2
     show yuri at f21 zorder 3
@@ -272,15 +272,15 @@ label ch1_main_end:
     y "If I was full of myself..."
     y 1r "...I would deliberately go out of my way to make everything I do overly cutesy!"
     show yuri at t21 zorder 2
-    show natsuki at f22 zorder 3
+    show natsuki 1o at f22 zorder 3
     "Oooooooooooh~!"
-    n 1o "Uuuuuu...!"
+    n "Uuuuuu...!"
     show sayori 2l at l41 behind yuri,natsuki
     show yuri at t32 zorder 2
     show natsuki at t33 zorder 2
     s "U-Um!!"
     s "Is everyone okay...?"
-    "Did they just ignored Sayori? What the fuck with them?"
+    "Did they ignored Sayori? What the fuck is wrong with them?"
     "I would say something about that, but I prefer not to intruding them."
     show sayori 2 at lhide
     hide sayori
@@ -288,8 +288,8 @@ label ch1_main_end:
     n 1f "Well, you know what?!"
     n "I wasn't the one whose boobs magically grew a size bigger as soon as [player] started showing up!!"
     show yuri 3p at h32
-    "Whooohohoooo~! Wait what?!"
     show natsuki at t33 zorder 2
+    "Whooohohoooo~! Wait what?!"
     y "N-Natsuki!!"
     show monika 3l at l41 behind yuri,natsuki
     m "Um, Natsuki, that's a little--"
@@ -885,14 +885,14 @@ label ch1_end_monika:
     "Suddently, Monika's expression changed for an determinated one."
     m "..."
     show monika at f31 zorder 3
-    m 1i "You are right!"
-    m 2i "Listen everybody! Now!"
+    m 1s "You are right!"
+    m 2t "Listen everybody! Now!"
     stop music fadeout 1.0
     show yuri 2t at t32 zorder 2
     show natsuki 5c at t33 zorder 2
     ny "Eh?!"
     m "You two, stop fighting!"
-    m 2h "This club was born to make a special place to talk about literature and make friends with everybody..."
+    m 2s "This club was born to make a special place to talk about literature and make friends with everybody..."
     m 2n "Even with weebos..."
     show yuri 2w
     show natsuki 42
@@ -908,7 +908,7 @@ label ch1_end_monika:
     n "..."
     show monika at f42
     m 1h "Alright. Both of you must apologize to each other."
-    m "Now!"
+    m 1s "Now!"
     show monika at t42
     show yuri at s43
     y 4a "I..."
@@ -936,14 +936,14 @@ label ch1_end_monika:
     n 1x "This is exactly why..."
     "Ah shit, here we go again."
     show monika 1c zorder 3
-    "I pat Monika on the shoulder and point at them to convince her to stop them."
+    "I pat Monika on the back and point at them to convince her to stop them."
     show sayori 1u at s41
     "I can see Sayori beign sad about this situation, but it's Monika's responsability to make this club a non-toxic place."
     n 1w "Exactly why nobody likes--"
     show natsuki at t44 zorder 2
     stop music
     show monika at f42
-    m 2i "{i}Okay, that's enough!!{/i}"
+    m 2t "{i}Okay, that's enough!!{/i}"
     show sayori 1v at h41
     show yuri 3f at f43 zorder 3
     show natsuki 1o at f44 zorder 3
@@ -1167,7 +1167,7 @@ label ch1_end_mc:
     show sayori at t21
     show monika at f22 zorder 3
     m 2d "[player], I'm surprised, I never thought you have such strong personality to make peace and order on a group."
-    m 2l "I guess I understated you all this time~! Hahahaha..."
+    m 2l "I guess I underestimated you all this time~! Hahahaha..."
     show monika at t22 zorder 2
     mc "Ahahahaha..."
     "I make a fake laugh, her \"joke\" wasn't funny, but I'm trying to sympathize with her too."

@@ -284,53 +284,49 @@ label ch0_post_loop:
 
             menu:
                 "Alright, let's see..."
-                "Happy Thoughts \n $650" if not sbook_bought:
+                "Happy Thoughts \n $650" if not bag_inventory.has_item("sbook1"):
                     mc "..."
                     mc "Sayori may like this one..."
                     menu:
                         "Buy Happy Thoughts ($650)?"
                         "Yes":
                             $ money -= 650
-                            $ sbook_bought = True
                             $ bag_inventory.add_item("sbook1", score=1)
                             "You bought the book \"Happy Thoughts\"."
                             $ books_bought += 1
                         "No":
                             pass
-                "Dark in the blossoms \n $680" if not ybook_bought:
+                "Dark in the blossoms \n $680" if not bag_inventory.has_item("ybook1"):
                     mc "..."
                     mc "Could Yuri love this?"
                     menu:
                         "Buy Dark in the blossoms ($680)?"
                         "Yes":
                             $ money -= 680
-                            $ ybook_bought = True
                             $ bag_inventory.add_item("ybook1", score=1)
                             "You bought the book \"Dark in the blossoms\"."
                             $ books_bought += 1
                         "No":
                             pass
-                "Anime & Stuff \n $760" if not nbook_bought:
+                "Anime & Stuff \n $760" if not bag_inventory.has_item("nbook1"):
                     mc "..."
                     mc "Maybe this can help me with Natsuki..."
                     menu:
                         "Anime & Stuff ($760)?"
                         "Yes":
                             $ money -= 760
-                            $ nbook_bought = True
                             $ bag_inventory.add_item("nbook1", score=1)
                             "You bought the book \"Anime & Stuff\"."
                             $ books_bought += 1
                         "No":
                             pass
-                "Shadows of epiphany \n $500" if not mbook_bought:
+                "Shadows of epiphany \n $500" if not bag_inventory.has_item("mbook1"):
                     mc "..."
                     mc "So, this is the book that Monika talked about..."
                     menu:
                         "Buy Shadows of epiphany ($500)?"
                         "Yes":
                             $ money -= 500
-                            $ mbook_bought = True
                             $ bag_inventory.add_item("mbook1", score=1)
                             "You bought the book \"Shadows of epiphany\"."
                             $ books_bought += 1
