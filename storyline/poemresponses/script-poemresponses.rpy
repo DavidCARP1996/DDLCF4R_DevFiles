@@ -114,6 +114,7 @@ label poemresponse_monika:
     scene bg club_day
     show monika 1a at t11 zorder 2
     with wipeleft_scene
+    $ poemopinion = "med"
     if m_poemappeal[chapter - 1] < 0:
         $ poemopinion = "bad"
     elif m_poemappeal[chapter - 1] > 0:
@@ -1827,7 +1828,7 @@ label ch1_y_good:
     y 1e "..."
     "As Yuri reads the poem, I notice her eyes lighten."
     y 2f "...Exceptional."
-    mc "Eh? What was that?"
+    mc "Eh...?"
     y "...?"
     y 2n "D-Did I say that out loud...?"
     "Yuri first covers her mouth, but then ends up covering her whole face."
@@ -2283,6 +2284,17 @@ label ch3_y_good:
             y "If you put it that way..."
             y "...Yeah..."
             y 4e "We really are friends now, aren't we?"
+            mc "Of course!"
+            show yuri at face(y=600) with dissolve
+            with dissolve_cg
+            "I hug Yuri, and then she hug me back."
+            "We suddently are hugging each other strongly... I can feel her heartbeats pounding between our chests, it's so strong like mine."
+            "I can feel she's excited like me for this moment... I'm so happy..."
+            hide yuri
+            with dissolve_cg
+            show yuri 4e at t11 zorder 2
+            with dissolve_cg
+            "After a few seconds we let each other go..."
             "Yuri puts her head in her hands."
             "But this time, she's smiling as she does it."
             mc "Do you want to show me your poem?"
@@ -2495,6 +2507,25 @@ label m_yuri_1:
     m "Just keep exploring, and learn by trying new things!"
     return
 
+label m_monika_1:
+    m "..."
+    m "Oh my god!"
+    mc "What's happening?"
+    m "It's... it's..."
+    mc "... ... ..."
+    m "This is amazing! I like it a lot [player]!"
+    mc "Really? Well, I don't know what to say..."
+    m "Well, maybe I like it because I'm into the same writing."
+    m "I don't know, it's just awesome for someone who never has been into literature."
+    mc "Do you think I am a fucking ignorant who had luck with this poem? Is that it?!"
+    m "Hahahahahaha! No dummy, don't say such thing!"
+    m "It's just... I underestimated you."
+    mc "I knew it."
+    m "But don't worry, you have potential for this. Just keep it up, okay?"
+    mc "Whatever..."
+    m "I'm glad to hear that."
+    return
+
 label m_natsuki_2:
     m 1j "It's pretty good~"
     m 1a "You've been spending some time with Natsuki, haven't you?"
@@ -2574,6 +2605,34 @@ label m_yuri_2:
     mc "...Well, there's not really anything wrong with that!"
     m 1n "Oh, well I know...!"
     m "I was just saying~"
+    return
+
+label m_monika_2:
+    if ch1_winner == "Monika":
+        m "Perfect!"
+        m "I like your style."
+        m "Are you getting inspired in my writing or something?"
+        mc "Why?"
+        m "Because these two days you've been writing your poems with the same style as mine."
+        mc "Sorry if that means I'm copying you."
+        m "No, that's not... In fact, I think it's nice for me."
+        m "Don't you ever felt the sensation of somebody getting inspired on your works or something?"
+        mc "Nope."
+        m "I see... Don't worry, it's something like this, that's all..."
+        m "Just keep your trail with the writing, okay?"
+        mc "Sure..."
+    else:
+        m "... ... ..."
+        m "Well, it's nice. I like it a lot."
+        m "You've been improving, you know?"
+        if ch1_winner == "Yuri":
+            mc "I don't think so. I guess I like more the previous poem than this one."
+        else:
+            mc "Well, maybe you're right."
+        m "Hahahahaha, maybe..."
+        m "Either way, you're been doing good at writing poems. Keep it up."
+        mc "Alright..."
+    m "Hehe~!"
     return
 
 label m_natsuki_3:
@@ -2675,4 +2734,107 @@ label m_yuri_3:
     mc "You say that like I'm going to hurt her..."
     m 1l "Sorry, I didn't really mean that~"
     m "If anything, she might accidentally hurt herself."
+    return
+
+label m_monika_3:
+    if ch1_winner == "Monika" and ch2_winner == "Monika":
+        "Monika stares the poem with emotion."
+        m "[player]..."
+        m "I think I'm in love..."
+        m "With your poems of course."
+        mc "Ah, hahahahaha!"
+        m "Hahahahaha!"
+        m "What's so funny?"
+        mc "I don't know... your response?"
+        m "Hm... maybe... uhuhu~!"
+        "Suddently, we are in silence for a while."
+        play music t9 fadeout 1.0
+        m "[player]."
+        m "I think you are a great person. I wish I could have known you better last year..."
+        m "Now I'm feeling bad for treating you so badly before, treating you like a loser when all this time you was fighting against your disgraces."
+        m "I should had do something for you, just like Ryoma and Camilla always did for you."
+        mc "Monika..."
+        m "Since we've been spending time here in the club, I started to know you better."
+        m "Now I see why Sayori loves you so much and why she's so lucky to have a friend like you at her side all this time."
+        m "I... I neved had the luck to have met such wonderful person. I feel so sorry for denigrating you the whole time we were classmates..."
+        m "My arrogancy never let me see your real 'you', all what I saw was an bullying-target autistic loser."
+        m "Jesus, I was so blind... I feel stupid now!"
+        mc "Listen, it's okay. If I hated you for all that, then I never wanted to spend time with you..."
+        mc "Did I ignored you? No. In fact, I gave you a chance. And it worthed."
+        m "Do you... Do you think so?"
+        mc "Yes Monika, indeed."
+        m "..."
+        m "Thank you very much [player]!"
+        m "I hope I can compensate your friendship with something big... You deserve the best."
+        mc "Ehm, maybe...(?)"
+        m "Don't be modest, I'm talking seriously."
+        m "... ... ..."
+        play music t5 fadeout 1.0
+        m "I know!"
+        m "I've been preparing a party in my house for tonight since last week. All the popular boys and girls will be there, even your friends Camilla and Ryoma."
+        m "You can come with me~!"
+        mc "Monika... I..."
+        menu:
+            "A party? Shit! I hate parties, specially the ones that Monika likes. Anyway, what should I do?"
+
+            "I'm in.":
+                m "Yaaay~!"
+                "Is she hugging me?! Oh my god, I... I don't know how to react to that..."
+                if not s_readpoem:
+                    "Everybody is looking at us with disgust, even Sayori... Jesus Christ, I thought she was expecting this moment with anyone..."
+                else:
+                    "Yuri and Natsuki are looking at us with disgust... I can't blame them, my poems only made them reject me."
+                m "Oops! Sorry for that, I felt excited..."
+                mc "Don't worry Monika."
+                pass
+            "Sorry, but I already have plans for tonight.":
+                m "I see..."
+                m "Don't worry, do whatever you need to do. The invitation will be still open for you anyway, just give me a call to confirm that, okay?"
+                mc "Sure, thanks Monika."
+                m "Don't mention it."
+                pass
+    elif ch1_winner == "Monika" and ch2_winner != "Monika":
+        m "Hmm... It's curious..."
+        mc "What are you talking about?"
+        m "Do you think your previous poem was so bad that you come back to the writing of the first day?"
+        if ch2_winner == "Yuri":
+            mc "Absolutely not! It's just a coincidence that my writing is the same like the first one because I'm trying different writings everyday. Also, I like more the previous one."
+        else:
+            mc "I don't know, the thing is I'm trying different writings everyday. So it's just a coincidence that today I wrote the same style like the first day one."
+        m "So was that then..."
+        m "Anyway, it's not bad idea after all."
+        m "But it seems curious for me to see how you writed the today's poem just like the first one, I thought you don't liked the yesterday's writing, that's all."
+        mc "Oh, I see..."
+    elif ch1_winner != "Monika" and ch2_winner == "Monika":
+        m "Hmm?"
+        m "Seems like you're trying my writing, interesting."
+        mc "There's something wrong with that?"
+        m "No, of course not."
+        m "In fact, I think it's nice. I like your today's poem."
+        m "I wish you had the same style since the first day."
+        mc "Why?"
+        m "Well... Today you proved that you really have potential with this."
+        m "I'm not saying the previous poems of yours are bad, it's... I don't know. The thing is I like a lot this one."
+        m "Good job [player]!"
+        mc "Well... thank you..."
+    else:
+        m "... ... ..."
+        mc "... ... ..."
+        mc "You don't like it, right?"
+        m "Of course n..."
+        m "..."
+        mc "So...?"
+        m "I mean... I like it..."
+        m "But I see how much costed to you improve your writing, that's all."
+        if ch1_winner == "Yuri" and ch2_winner == "Yuri":
+            m "I'm not saying that you've been doing bad all this time, it's just I knew you had an hidden potential. But I thought I could see it the first day."
+        else:
+            pass
+        mc "I see, so you like this new one but you disliked the others in secret... Now I understand."
+        m "No I..."
+        mc "Speak."
+        m "It's nothing, okay? Do you want to read my poem or not?"
+        mc "Sure, give it on!"
+        
+    m "Hehe~!"
     return

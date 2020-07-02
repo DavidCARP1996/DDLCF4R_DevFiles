@@ -6,7 +6,15 @@ label ch4_main:
     play music t6
 
     "It's already Sunday."
-    if ch4_scene == "natsuki":
+    if ch4_scene == "yuri":
+        "I've been getting increasingly anxious about Yuri's upcoming visit."
+        "I keep telling myself there's no reason to be nervous, but it doesn't help much."
+        "Yuri is clearly an introvert and also an intimate person in general."
+        "There's no doubt that she'll open up a little bit when it's just the two of us."
+        "Meanwhile, we've even been texting occasionally."
+        "She was extremely apprehensive at first, but it wasn't long before I was already learning more about her."
+        "But putting Yuri aside..."
+    elif ch4_scene == "natsuki":
         "I've been getting increasingly anxious about Natsuki's upcoming visit."
         "I keep telling myself there's no reason to be nervous, but it doesn't help much."
         "I wonder if she'll act any different when it's just the two of us?"
@@ -15,14 +23,23 @@ label ch4_main:
         "She's almost a different personality on the phone, using tons of emoji and cute language."
         "She also really likes complaining about things, but I kind of saw that one coming."
         "But putting Natsuki aside..."
-    else:
-        "I've been getting increasingly anxious about Yuri's upcoming visit."
+    elif ch4_scene == "monika":
+        "I've been getting increasingly anxious about Monika's upcoming visit."
         "I keep telling myself there's no reason to be nervous, but it doesn't help much."
-        "Yuri is clearly an introvert and also an intimate person in general."
-        "There's no doubt that she'll open up a little bit when it's just the two of us."
+        "I can't believe that MONIKA herself is coming to my house."
+        "I don't know what the whole school will think about it if she dares spread the gossip."
         "Meanwhile, we've even been texting occasionally."
-        "She was extremely apprehensive at first, but it wasn't long before I was already learning more about her."
-        "But putting Yuri aside..."
+        "She just doesn't stops with her exaggerated sympathy with me."
+        "She's also sending me normie memes because she knows I'm into memes, but she doesn't know that these aren't my kind of humor."
+        "But putting Monika aside..."
+    else:
+        "I've been getting increasingly anxious about Camilla's upcoming visit."
+        "I keep telling myself there's no reason to be nervous, but it doesn't help much."
+        "Honestly, I never had the chance to invite her or Ryoma in my house. The only person who paid me a visit all this time was always Sayori."
+        "So I bought some food in case she wants to snack..."
+        "Meanwhile, we've been texting a lot."
+        "She's nice even via SMS, reading her messages she is obviously excited for the visit to my place."
+        "But putting Camilla aside..."
     "I haven't heard a thing from Sayori since she left club early the other day."
     "It's not like we text each other all the time or anything..."
     "But I've been worried about her in the back of my mind."
@@ -36,6 +53,7 @@ label ch4_main:
     "Rather than asking, I simply tell her \"I'm coming over\", much like we've done in the past."
     "Once I reach Sayori's house, I knock on the door before entering it myself."
     "Again, we used to play so often that we've made it a habit of simply entering each other's houses like we were family."
+    #"Anyway, she was my family all this time...{w} I won't go into details about that."
     scene black with wipeleft
     "The house is quiet."
     "Sayori isn't anywhere on the first floor, so I assume she's up in her room."
@@ -68,12 +86,13 @@ label ch4_main:
     s "It's only natural for her to keep me informed about the festival preparations, right?"
     mc "Ah, that's true..."
     mc "But what about you?"
-    mc "Aren't you going to be helping Monika today?"
-    s 4bb "Of course!"
-    s "But I'm just helping her online."
-    s "We didn't plan to meet up or anything."
-    mc "Ah, so it's just me and [ch4_name], then..."
-    s 1ba "Yep~"
+    if ch4_scene != "monika":
+        mc "Aren't you going to be helping Monika today?"
+        s 4bb "Of course!"
+        s "But I'm just helping her online."
+        s "We didn't plan to meet up or anything."
+        mc "Ah, so it's just me and [ch4_name], then..."
+        s 1ba "Yep~"
     "There's more silence between us."
     show sayori 1bk 
     "Sayori stares in a random direction."
@@ -275,7 +294,7 @@ label ch4_main:
     "I shouldn't be worrying too much, and we're definitely going to have a great time tomorrow."
     "I should just focus on what's ahead of me!"
     call expression "ch4_exclusive_" + ch4_scene from _call_expression_2
-    call ch4_end from _call_ch4_end
+    call ch4_end
 
     return
 
@@ -456,7 +475,7 @@ label ch4_exclusive_natsuki:
     "I'm faster."
     "I grab her wrist with my hand before it reaches my face."
     "Natsuki tries to use her other hand to fight back, but I grab that one as well."
-    $ persistent.clear[4] = True
+    $ persistent.clear[10] = True
     scene n_cg3_base
     show n_cg3_exp1
     show n_cg3_cake
@@ -1047,7 +1066,7 @@ label ch4_exclusive_yuri:
     hide yuri
     "I rush out and fetch a small towel, then I dampen it with hot water."
     "I return to my room and kneel back down in front of her."
-    $ persistent.clear[5] = True
+    $ persistent.clear[9] = True
     scene y_cg3_base with dissolve_cg
     mc "Here..."
     "I pat down Yuri's face and neck with the towel."
@@ -1211,11 +1230,38 @@ label ch4_exclusive_yuri:
     "Sayori waves goodbye after her."
     return
 
-
+label ch4_exclusive_monika:
+    play music t6 fadeout 2.0
+    scene bg house with wipeleft_scene
+    "As I approach my house, I see something that makes me feel a moment of panic."
+    m "Hola estas en mi tura jajajaj"
+    $ persistent.clear[11] = True
+    show monika 1 at face(y=600) with dissolve
+    stop music fadeout 2.0
+    m "Come with me!"
+    m "Let's be happy forever!"
+    mc "Monika?!"
+    m "FOREVER!"
+    m "AND..."
+    m "EVER!!!"
+    mc "Monika what the fuck are you doing...???"
+    s "Hi~!"
+    m "S...Sa...Sayori???"
+    m "..."
+    mc "Wodofokyureduinmonoca?!"
+    "Monika is strongly pressing my face, it's hurting a lot...!"
+    "Suddently she let's me go."
+    s "Ehm... Is something wrong here?"
+    m "Ehh..."
+    m "No. It's nothing Sayori I just..."
+    m "...I just about to back home. Yeah."
+    "Monika hurries off without giving explanations."
+    "Sayori waves goodbye after her."
+    return
 
 label ch4_end:
     play music t10 fadeout 2.0
-    show sayori 1ba  at t11 zorder 2
+    show sayori 1ba at t11 zorder 2
     mc "Sayori--"
     mc "I thought you didn't want to come over today!"
     s 2bl "Ahaha, well..."
@@ -1244,9 +1290,19 @@ label ch4_end:
     s "You wouldn't have to put up with me being selfish!"
     s 1bv "Monika was right..."
     s "I should just..."
-    mc "Monika...?"
-    mc "Monika was right about what?"
+    "Monika...?"
+    menu:
+        "It can be..."
+
+        "Let her speak.":
+            s "... just..."
+            s "... ... ..."
+            mc "Sayori? Tell me what did Monika said to you?"
+            pass
+        "Monika was right about what?":
+            pass
     s "..."
+    "I don't like this, I don't know why but I felt shivers when Sayori mentioned Monika."
     mc "Sayori..."
     mc "What I said before is true."
     mc "I'm not going to let this continue."
@@ -1288,11 +1344,11 @@ label ch4_end:
         "I love you.":
             $ sayori_confess = True
             hide black with dissolve_cg
-            call ch4_end_yes from _call_ch4_end_yes
-        "You'll always be my dearest friend.":
+            call ch4_end_yes
+        "You'll always be my dearest friend." if not persistent.mount_achieved:
             $ sayori_confess = False
             hide black with dissolve_cg
-            call ch4_end_no from _call_ch4_end_no
+            call ch4_end_no
 
     return
 

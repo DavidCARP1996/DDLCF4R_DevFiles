@@ -132,7 +132,7 @@ label natsuki_exclusive_1:
     "I guess that explains Natsuki's interest in baking."
     "Still, of all the hobbies to pick up from a manga, that's definitely one of the better ones."
     "Not to mention she's really good at it, so who am I to judge?"
-    $ persistent.clear[0] = True
+    $ persistent.clear[4] = True
     scene n_cg1_bg
     show n_cg1_base
     with dissolve_cg
@@ -384,7 +384,7 @@ label natsuki_exclusive_2_ch3:
     n 1 "Ush--"
     "Natsuki climbs onto the chair, then slowly balances onto her feet."
     "Since she refuses my help, I take a seat with my back against the side of the doorway and simply watch."
-    $ persistent.clear[1] = True
+    $ persistent.clear[5] = True
     scene n_cg2_bg
     show n_cg2_base
     with dissolve_cg
