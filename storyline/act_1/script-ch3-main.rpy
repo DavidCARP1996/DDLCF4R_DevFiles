@@ -394,7 +394,7 @@ label ch3_start_none:
     return
 
 
-label ch3_end:
+label ch3_main_end:
     stop music fadeout 1.0
     scene bg club_day
     show monika 4b at t32 zorder 2
@@ -630,13 +630,13 @@ label ch3_end:
     menu:
         "But of course, I'm going to go with--"
         "Natsuki.":
-            call ch3_end_natsuki from _call_ch3_end_natsuki
+            call ch3_end_natsuki
         "Yuri.":
-            call ch3_end_yuri from _call_ch3_end_yuri
+            call ch3_end_yuri
         "Monika.":
-            call ch3_end_monika from _call_ch3_end_monika
+            call ch3_end_monika
         "Sayori...":
-            call ch3_end_sayori from _call_ch3_end_sayori
+            call ch3_end_sayori
     scene bg residential_day
     with wipeleft_scene
     $ ch4_name = ch4_scene.capitalize()
@@ -686,11 +686,11 @@ label ch3_end_sayori:
     menu:
         m "Just think of the club, okay?"
         "Natsuki.":
-            call ch3_end_natsuki from _call_ch3_end_natsuki_1
+            call ch3_end_natsuki
         "Yuri.":
-            call ch3_end_yuri from _call_ch3_end_yuri_1
+            call ch3_end_yuri
         "Monika." if help_monika == None:
-            call ch3_end_monika from _call_ch3_end_monika_1
+            call ch3_end_monika
     return
 
 
@@ -780,11 +780,11 @@ label ch3_end_monika:
     menu:
         m "Do you have a preference, [player]?"
         "Natsuki.":
-            call ch3_end_natsuki from _call_ch3_end_natsuki_2
+            call ch3_end_natsuki
         "Yuri.":
-            call ch3_end_yuri from _call_ch3_end_yuri_2
+            call ch3_end_yuri
         "Sayori..." if help_sayori == None:
-            call ch3_end_sayori from _call_ch3_end_sayori_1
+            call ch3_end_sayori
     return
 
 label ch3_end_natsuki:

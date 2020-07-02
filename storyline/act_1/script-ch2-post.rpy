@@ -6,23 +6,23 @@ label ch2_post:
     $ cafe_closed = False
     $ gamestore_closed = False
     $ library_closed = False
+    $ ch2_mc_busted = None
     $ ch2_battle_2_won = False
+    $ fightingclub_closed = False
     stop music fadeout 2.0
     scene bg house
     with wipeleft_scene
     pause 3.0
     "..."
-    "I'm hungry... I want to go to the cafeteria and eat something."
-    $ HKBShowButtons()
-    "So, let's go!"
-    "And if you want, we can do something else..."
-    pass
+    jump ch2_post_loop
 
 label ch2_post_loop:
     while (stamina > 0) and (hr_hour <= 20):
+        if not renpy.music.get_playing(channel='music') == audio.t5:
+            play music t5 fadeout 1.0
+        $ HKBShowButtons()
         show screen freeroam_hud
         with Dissolve(.5)
-        play music t5
         if ch2_post_activities == 0:
             $ menutext = "Where should I go first?"
         else:
@@ -31,8 +31,12 @@ label ch2_post_loop:
             "[menutext]"
 
             "Go to the park" if not park_closed:
-                $ ch2_post_activities += 1
-                call ch2_post_go_to_park
+                if ch1_battle_2_won == True:
+                    mc "I don't want to come back to the park for now..."
+                else:
+                    mc "I have a bad feeling about going there."
+                    mc "I'd better go somewhere else."
+                $ park_closed = True
                 pass
             "Go to the cafe" if not cafe_closed:
                 $ ch2_post_activities += 1
@@ -46,6 +50,10 @@ label ch2_post_loop:
                 $ ch2_post_activities += 1
                 call ch2_post_go_to_library
                 pass
+            "Go to the Kick boxing Club" if not fightingclub_closed:
+                $ ch2_post_activities += 1
+                call ch2_post_go_to_fightingclub
+                pass
             "Go home":
                 jump ch2_post_go_home
                 pass
@@ -53,199 +61,68 @@ label ch2_post_loop:
         pass
     jump ch2_post_go_home
 
-    label ch2_post_go_to_park:
-        mc "Well then, let's have a walk in the park."
-        mc "I need to do some exercises anyway..."
-        scene bg park_way
-        with wipeleft_scene
-        mc "Hmmm... It's weird."
-        mc "Why it's so loud in that point?"
-        mc "Let's check it out..."
-        scene bg park_way2
-        with wipeleft_scene
-        "What's happening...?"
-        stop music fadeout 2.0
-        mc "Oh-oh!"
-        "Woman" "Please somebody stop him!"
-        "So was that! An robber in this park!"
-        "Some guys are trying to stop him, but..."
-        "Man 1" "Hey you! Stop!"
-        "*bonk!*"
-        "Man 1" "Aahhh!!!"
-        "Man 2" "I will stop him!"
-        "*bonk!*"
-        "Man 2" "You piece of sh...!"
-        "Shit, both were beaten up..."
-        menu:
-            "Try to chase him!":
-                $ HKBShowButtons()
-                $ HKBHideButtons()
-                hide screen freeroam_hud
-                with Dissolve(.5)
-                mc "Well, I guess I must do it by myself."
-                call ch2_battle_2
-                $ HKBShowButtons()
-                $ ch2_battle_2_won = True
-                mc "Phew! That was close..."
-                $ bag_inventory.add_item("pistol", score=1)
-                "[player] received 9mm pistol."
-                if battle_extra_rewards_rate <= 5:
-                    mc "!"
-                    $ money += 2000
-                    "[player] received $2000 additional."
-                    mc "Nice!"
-                "Cop" "Hey you!"
-                mc "Wha-?"
-                "Thank goodness I hide the pistol just in time..."
-                "Cop" "Didn't you killed him, isn't?"
-                mc "Well..."
-                "I check his corpse... Fuck, he's dead."
-                mc "I..."
-                "Cop" "I guess you must come with me to the Police station because of homicide."
-                mc "WHAT THE FUCK?! THAT ASSHOLE WAS TRYING TO KILL ME WITH A GUN!! I TRIED TO STOP HIM AT ANY COST!! I DEFENDED MY OWN LIFE!!!"
-                if persistent.monika_help == True:
-                    mc "AND ONE MORE THING... IF I {nw}"
-                    $ gtext = glitchtext(4)
-                    $ gtext2 = glitchtext(80)
-                    "[gtext]" "{cps=60}[gtext2]{/cps}{nw}"
-                    show screen tear(20, 0.1, 0.1, 0, 40)
-                    play sound "sfx/s_kill_glitch2.ogg"
-                    pause 0.25
-                    stop sound
-                    hide screen tear
-                    "Cop" "I mean, congratulations boy!"
-                    "Cop" "If people were like you, there would be less criminals on the streets."
-                    mc "I..."
-                    "What did just happened?!"
-                    "Cop" "Here is your reward for good citizen boy."
-                    $ money += 100
-                    "[player] received $100."
-                    mc "Ehm... Thank you...(?)"
-                    "I said that with a mix of gratitude and WTF expressions."
-                    "Cop" "It was nothing boy, good luck!"
-                    "The cop leaves me alone."
-                    mc "..."
-                    scene bg park_way
-                    with wipeleft_scene
-                    $ money += 100
-                    "I move away from the scene, giving back the wallet to the woman on the way."
-                    "She gave me $100 too."
-                    "I take a sit un a bench."
-                    mc "What the fuck did just happened?"
-                    mc "First I kill that asshole and the cop was trying to arrest me, but then he changed of mind..."
-                    mc "*sigh*"
-                    pause 1.0
-                    play music tmonika
-                    show monika 1d at t11 zorder 1
-                    m "[player], are you okay?"
-                    mc "Monika?! What are you doing here?"
-                    mc "I-I mean... Have you seen ev-"
-                    m 2a "Yes, I do."
-                    m "Thank goodness you were able to win."
-                    m 2l "Otherwise, we'll be still 4 members in the club. Hahaha~!"
-                    "What's so funny? I would be fucking dead right now!"
+    label ch2_post_go_to_fightingclub:
+        mc "The Kickboxing Club..."
+        if accept_kickboxingclub_offer == "Yes":
+            "I said I will go. I will not break that promise to Ryoma."
+            pass
+        elif accept_kickboxingclub_offer == "Maybe":
+            "I guess I can enter in... But I didn't confirmed that."
+            menu:
+                mc "Hmm..."
+                "Yes":
                     pass
-                else:
-                    mc "AND ONE MORE THING... IF I WERE KILLED BY THAT MOTHERFUCKER, WILL YOU DO SOMETHING AT RESPECT???"
-                    "Cop" "Enough! I'm taking you to the Police Station, you will be in jail for a long time..."
-                    "Oh my fucking God! Why did I disputed with that girl?!"
-                    show monika 1c at t11 zorder 1
-                    m "Stop!"
-                    mc "Monika?!"
-                    m "Mister, he didn't do anything bad, let him go please."
-                    "Cop" "Sorry, but he commited homicide, he must be in jail."
-                    m 1t "Ah yeah? And how much do you ask to pay his bail?"
-                    "Cop" "Are you serious?! In order to free him you must pay a mount of $5000."
-                    mc "Shit, I'm fucked up!"
-                    m 1u "No you don't, I have the money!"
-                    "What?!"
-                    m 1s "There you go, let him go!"
-                    "Cop" "Alright, you win this time boy. But the next time I watch you fighting someone else, you'll not be so lucky..."
-                    "Fuck you!"
-                    "I won't say it loud to avoid problems..."
-                    "That stupid cop lefts."
-                    pause 1.0
-                    play music tmonika
-                    m 1d "[player], are you okay?"
-                    mc "Yes Monika, thanks..."
-                    mc "I'm so sorry for making you spend $5000 on me."
-                    if ch2_choice == "mc":
-                        mc "I feel worse for having treated you so badly at the club."
-                        "I said it so shamefully, wanting to cry. Seriously, I was an asshole... What I've been thinking?!"
-                    m 2e "Hahahaha~! Don't worry about that, it was nothing after all..."
-                    mc "For real?"
-                    m 2j "For real."
-                    mc "T-Thanks Monika... I feel a bit better now..."
-                    m 2a "That's good."
-                    m "Anyway, let's go somewhere else..."
-                    mc "Yeah!"
-                    scene bg park_way
-                    with wipeleft_scene
-                    show monika 1a at t11 zorder 1
-                    $ money += 200
-                    "Monika and I moved to the other side of the park. In the way, the woman gave me $200 for bringing her wallet back." 
-                    mc "By the way, what are you doing here?"
-                    mc "I-I mean... Have you seen ev-"
-                    m 2a "Yes, I do."
-                    m "Thank goodness you were able to win and I came just in time."
-                    m 2l "Otherwise, we'll be still 4 members in the club. Hahaha~!"
-                    "What's so funny? I would be dead or in the fucking jail right now!"
+                "No":
+                    mc "Naaaah, honestly I'm not in mood..."
+                    mc "Maybe the next time."
+                    $ fightingclub_closed = True
+                    jump ch2_post_loop
                     pass
-                m 1b "Anyway. I'm so glad you're okay after all!"
-                m "Sayori could be very sad if something happens to you."
-                "After Monika said that, I feel like my stomach is twisting for no reason."
-                m 5 "So, do you want I take you to your house?"
-                menu:
-                    "Sorry, but I have things to do...":
-                        m 1e "Hmm... Okay!"
-                        m 1k "Good luck with your bussiness~!"
-                        mc "Thanks Monika."
-                        mc "I see you later!"
-                        show monika at thide zorder 1
-                        hide monika
-                        stop music fadeout 1.0
-                        "Alright, let's go somewhere else..."
-                        pass
-                    "Sure...":
-                        m 1j "Alright! I'll take you in my car then."
-                        m "Come with me."
-                        mc "Okay!"
-                        scene bg house
-                        with wipeleft_scene
-                        show monika 1d at t11 zorder 1
-                        m 1a "Here we are."
-                        mc "Thanks Monika, I owe you one."
-                        m "It was nothing."
-                        m 1b "So, see you tomorrow?"
-                        mc "Yes Monika, see you tomorrow."
-                        m 5 "Fine. Good luck bro~!"
-                        show monika at thide zorder 1
-                        hide monika
-                        stop music fadeout 1.0
-                        "Monika's car is gone in the horizon..."
-                        mc "Now what?"
-                        pass
-                $ stamina -= 3
-                show screen freeroam_hud
-                with Dissolve(.5)
+            pass
+        elif accept_kickboxingclub_offer == "No":
+            "I told Ryoma that I don't have enough time for his club, but honestly, it was a silly lie to not hurt him."
+            "But {i}maybeee{/i} I can change of mind and join in anyways..."
+            menu:
+                mc "Hmm..."
+                "Yes":
+                    pass
+                "No":
+                    mc "Naaaah, honestly I'm not in mood..."
+                    mc "Maybe the next time."
+                    $ fightingclub_closed = True
+                    jump ch2_post_loop
+                    pass
+            pass
+        else:
+            "I saw a pamphlet about a Kickboxing Club founded by Ryoma, which announces a new schedule for activities, post-school to be exact."
+            "I wasn't interested before, but now I'm thinking that I need to do some exercises anyway."
+            "And yeah, it has something to do with [ch2_winner]..."
+            menu:
+                mc "Hmm..."
+                "Yes":
+                    pass
+                "No":
+                    mc "Naaaah, honestly I'm not in mood..."
+                    mc "Maybe the next time."
+                    $ fightingclub_closed = True
+                    jump ch2_post_loop
+                    pass
+            pass
+        "Alright. Let's go then."
+        call ch2_fightingclub_activities
+        mc "Well, see you tomorrow then."
+        "Ryoma & Camilla" "See ya~"
 
-                pass
-            "Ignore the situation...":
-                $ ch2_battle_2_won = False
-                mc "..."
-                "He gone in the horizon."
-                "Let's get the fuck out of here!"
-                scene bg residential_day
-                with wipeleft_scene
-                pass
+        $ fightingclub_closed = True
+        scene bg residential_day
+        with wipeleft_scene
+        $ stamina -= 5
 
-        $ park_closed = True
         return
 
     label ch2_post_go_to_cafe:
         mc "Hmm..."
-        $ ch2_winner = poemwinner[0].capitalize()
-        if poemwinner[0] == "Sayori" and backyard_check == False:
+        if ch2_winner == "Sayori" and backyard_check == False:
             $ menutext2 = "Should I invite Sayori?"
         else:
             $ menutext2 = "I want to share it with someone else... But with who?"
@@ -350,7 +227,7 @@ label ch2_post_loop:
                             mc "Yep."
                             s "What a meanie..."
                             pass
-                        "I don't know if she wants to talk to me anymore after... you know." if ch2_choose == "mc":
+                        "I don't know if she wants to talk to me anymore after... you know." if ch1_choice == "mc":
                             s "Oh, don't worry about that. She already forgiven you, don't you remember?"
                             mc "Do you think so?"
                             s "Yes! She's a nice person, with a big heart."
@@ -402,14 +279,14 @@ label ch2_post_loop:
                 mc "Sure!"
                 pass
             
-            "[ch2_winner]" if poemwinner[0] != "Sayori": # Cita con Yuri/Natsuki/Monika dependiendo de cuál ruta elegiste al escribir el poema.
+            "[ch2_winner]" if ch2_winner != "Sayori": # Cita con Yuri/Natsuki/Monika dependiendo de cuál ruta elegiste al escribir el poema.
                 mc "It's not bad idea after all... I can get more chances to know her better!"
                 mc "I feel bad about not inviting Sayori, but my wallet is not so big, you know..."
                 mc "I'm gonna call her so we can meet in the cafe."
                 scene bg cafe
                 with wipeleft_scene
                 if ch2_winner == "Yuri": # Cita con Yuri
-                    if ch2_choice == "yuri":
+                    if ch1_choice == "yuri":
                         show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y 2bc "If-If you don't mind, I brought a book with me... I mean, if you want to read something while we're waiting for our food."
@@ -438,7 +315,7 @@ label ch2_post_loop:
                                 y "Umm..."
                                 y 2bq "Who starts first?"
                                 pass
-                    elif ch2_choice == "natsuki":
+                    elif ch1_choice == "natsuki":
                         show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y "I-I hope the thing what happened in the club doesn't..."
@@ -460,7 +337,7 @@ label ch2_post_loop:
                         mc "Hmm... Maybe you're right."
                         mc "Well, how much do you know about her?"
                         pass
-                    elif ch2_choice == "mc":
+                    elif ch1_choice == "mc":
                         show yuri 1ba at t11 zorder 1
                         y "Thank you for inviting me to eat [player], it's very nice from your part..."
                         y "I-I hope the thing what happened in the club doesn't..."
@@ -509,7 +386,7 @@ label ch2_post_loop:
                 elif ch2_winner == "Natsuki": # Cita con Natsuki
                     scene bg cafe
                     with wipeleft_scene
-                    if ch2_choice == "yuri":
+                    if ch1_choice == "yuri":
                         n "Hmph!"
                         n "Don't think I came here because you like the idea."
                         n "I guess you owe me an apology."
@@ -523,7 +400,7 @@ label ch2_post_loop:
                         n "Whatever, just make our order quick, okay?"
                         mc "Okaaay..."
                         pass
-                    elif ch2_choice == "mc":
+                    elif ch1_choice == "mc":
                         n "I can't believe you dare to inviting me to eat after you yelled at us in the club."
                         n "What a hypocrite!"
                         mc "Listen, I'm very ashamed for that. Okay?"

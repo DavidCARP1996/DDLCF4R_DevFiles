@@ -1,6 +1,6 @@
 label ch0_main:
 
-    if breakfast == True:
+    if ch0_breakfast == True:
 
         scene bg house
         with dissolve_scene_full
@@ -29,7 +29,7 @@ label ch0_main:
         s 3a "Well... Let's go?"
         mc "Yeah, sure..."
 
-    if breakfast == False:
+    elif ch0_breakfast == False:
 
         scene bg residential_day
         with dissolve_scene_full
@@ -198,9 +198,9 @@ label ch0_main:
             show sayori 1b at h11
             mc "Okay okay!"
             mc "I'm gonna meet all of them when I come to the club, okay?"
-            if breakfast == True:
+            if ch0_breakfast == True:
                 pass
-            if breakfast == False:
+            if ch0_breakfast == False:
                 mc "Also, I want to taste these cupcakes you mentioned. I have not had breakfast, I'm hungry."   
             pass
         "Reject purpose":
@@ -225,10 +225,10 @@ label ch0_main:
             mc "Don't make promises you can't keep!"
             "I can't tell if Sayori is really that much of an airhead, or if she's so cunning as to have planned all of this out."
             "I let out a long sigh."
-            if breakfast == True:
+            if ch0_breakfast == True:
                 mc "Fine... I'll stop by. But because I like to make you happy, even if I'm not with it. Okay?"
                 pass
-            if breakfast == False:
+            if ch0_breakfast == False:
                 mc "Fine... I'll stop by for a cupcake. Because I'm hungry, okay?"
                 pass
     show sayori at h11
@@ -239,10 +239,10 @@ label ch0_main:
     scene bg corridor
     with wipeleft_scene
 
-    if breakfast == True:
+    if ch0_breakfast == True:
         "And thus, today marks the day I sold my soul to Sayori and her irresistible smile."
         pass
-    if breakfast == False:
+    if ch0_breakfast == False:
         "And thus, today marks the day I sold my soul for a cupcake."
         pass
     $ renpy.notify("Notice: inventory will be temporarily disabled.")
@@ -367,10 +367,10 @@ label ch0_main:
     hide natsuki
     hide yuri
     with wipeleft
-    if breakfast == True:
+    if ch0_breakfast == True:
         "Hot tea and cupcakes? Why the fuck did I take breakfast? Well, at least I'm a bit hungry yet."
         pass
-    if breakfast == False:
+    if ch0_breakfast == False:
         "Hot tea and cupcakes? What a good service!"
         pass
     "The girls have a few desks arranged to form a table."

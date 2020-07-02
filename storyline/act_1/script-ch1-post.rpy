@@ -7,6 +7,8 @@ label ch1_post:
     $ gamestore_closed = False
     $ library_closed = False
     $ ch1_battle_2_won = False
+    $ ch1_mc_busted = None
+    $ fightingclub_closed = False
     stop music fadeout 2.0
     scene bg house
     with wipeleft_scene
@@ -20,9 +22,10 @@ label ch1_post:
 
 label ch1_post_loop:
     while (stamina > 0) and (hr_hour <= 20):
+        if not renpy.music.get_playing(channel='music') == audio.t5:
+            play music t5 fadeout 1.0
         show screen freeroam_hud
         with Dissolve(.5)
-        play music t5
         if ch1_post_activities == 0:
             $ menutext = "Where should I go first?"
         else:
@@ -46,12 +49,76 @@ label ch1_post_loop:
                 $ ch1_post_activities += 1
                 call ch1_post_go_to_library
                 pass
+            "Go to the Kick boxing Club" if not fightingclub_closed:
+                $ ch1_post_activities += 1
+                call ch1_post_go_to_fightingclub
+                pass
             "Go home":
                 jump ch1_post_go_home
                 pass
 
         pass
     jump ch1_post_go_home
+
+    label ch1_post_go_to_fightingclub:
+        mc "The Kickboxing Club..."
+        if accept_kickboxingclub_offer == "Yes":
+            "I said I will go. I will not break that promise to Ryoma."
+            pass
+        elif accept_kickboxingclub_offer == "Maybe":
+            "I guess I can enter in... But I didn't confirmed that."
+            menu:
+                mc "Hmm..."
+                "Yes":
+                    pass
+                "No":
+                    mc "Naaaah, honestly I'm not in mood..."
+                    mc "Maybe the next time."
+                    $ fightingclub_closed = True
+                    jump ch1_post_loop
+                    pass
+            pass
+        elif accept_kickboxingclub_offer == "No":
+            "I told Ryoma that I don't have enough time for his club, but honestly, it was a silly lie to not hurt him."
+            "But {i}maybeee{/i} I can change of mind and join in anyways..."
+            menu:
+                mc "Hmm..."
+                "Yes":
+                    pass
+                "No":
+                    mc "Naaaah, honestly I'm not in mood..."
+                    mc "Maybe the next time."
+                    $ fightingclub_closed = True
+                    jump ch1_post_loop
+                    pass
+            pass
+        else:
+            "I saw a pamphlet about a Kickboxing Club founded by Ryoma, which announces a new schedule for activities, post-school to be exact."
+            "I wasn't interested before, but now I'm thinking that I need to do some exercises anyway."
+            "And yeah, it has something to do with [ch1_winner]..."
+            menu:
+                mc "Hmm..."
+                "Yes":
+                    pass
+                "No":
+                    mc "Naaaah, honestly I'm not in mood..."
+                    mc "Maybe the next time."
+                    $ fightingclub_closed = True
+                    jump ch1_post_loop
+                    pass
+            pass
+        "Alright. Let's go then."
+        call ch1_fightingclub_activities
+        mc "Well, see you tomorrow then."
+        "Ryoma & Camilla" "See ya~"
+
+        $ fightingclub_closed = True
+        $ accept_kickboxingclub_offer = "Yes"
+        scene bg residential_day
+        with wipeleft_scene
+        $ stamina -= 5
+
+        return
 
     label ch1_post_go_to_park:
         mc "Well then, let's have a walk in the park."
@@ -87,16 +154,17 @@ label ch1_post_loop:
                 $ HKBShowButtons()
                 $ ch1_battle_2_won = True
                 mc "Phew! That was close..."
-                $ bag_inventory.add_item("pistol", score=1)
-                "[player] received 9mm pistol."
                 if battle_extra_rewards_rate <= 5:
                     mc "!"
                     $ money += 2000
                     "[player] received $2000 additional."
+                    $ bag_inventory.add_item("pistol", score=1)
+                    "[player] received 9mm pistol."
                     mc "Nice!"
                 "Cop" "Hey you!"
                 mc "Wha-?"
-                "Thank goodness I hide the pistol just in time..."
+                if battle_extra_rewards_rate <= 5:
+                    "Thank goodness I hide the pistol just in time..."
                 "Cop" "Didn't you killed him, isn't?"
                 mc "Well..."
                 "I check his corpse... Fuck, he's dead."
@@ -108,11 +176,7 @@ label ch1_post_loop:
                     $ gtext = glitchtext(4)
                     $ gtext2 = glitchtext(80)
                     "[gtext]" "{cps=60}[gtext2]{/cps}{nw}"
-                    show screen tear(20, 0.1, 0.1, 0, 40)
-                    play sound "sfx/s_kill_glitch1.ogg"
-                    pause 0.25
-                    stop sound
-                    hide screen tear
+                    call glitch1
                     "Cop" "I mean, congratulations boy!"
                     "Cop" "If people were like you, there would be less criminals on the streets."
                     mc "I..."
@@ -124,6 +188,7 @@ label ch1_post_loop:
                     "I said that with a mix of gratitude and WTF expressions."
                     "Cop" "It was nothing boy, good luck!"
                     "The cop leaves me alone."
+                    $ ch1_mc_busted = False
                     mc "..."
                     scene bg park_way
                     with wipeleft_scene
@@ -164,6 +229,7 @@ label ch1_post_loop:
                     "Fuck you!"
                     "I won't say it loud to avoid problems..."
                     "That stupid cop lefts."
+                    $ ch1_mc_busted = True
                     pause 1.0
                     play music tmonika
                     m 1d "[player], are you okay?"
@@ -244,8 +310,7 @@ label ch1_post_loop:
 
     label ch1_post_go_to_cafe:
         mc "Hmm..."
-        $ ch1_winner = poemwinner[0].capitalize()
-        if poemwinner[0] == "Sayori" and backyard_check == False:
+        if ch1_winner == "Sayori" and backyard_check == False:
             $ menutext2 = "Should I invite Sayori?"
         else:
             $ menutext2 = "I want to share it with someone else... But with who?"
@@ -402,7 +467,7 @@ label ch1_post_loop:
                 mc "Sure!"
                 pass
             
-            "[ch1_winner]" if poemwinner[0] != "Sayori": # Cita con Yuri/Natsuki/Monika dependiendo de cuál ruta elegiste al escribir el poema.
+            "[ch1_winner]" if ch1_winner != "Sayori": # Cita con Yuri/Natsuki/Monika dependiendo de cuál ruta elegiste al escribir el poema.
                 mc "It's not bad idea after all... I can get more chances to know her better!"
                 mc "I feel bad about not inviting Sayori, but my wallet is not so big, you know..."
                 mc "I'm gonna call her so we can meet in the cafe."

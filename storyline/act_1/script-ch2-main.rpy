@@ -19,10 +19,22 @@ label ch2_main:
     s 1d "Speaking of which..."
     s "I'm kinda hungry..."
     s "Will you come with me to buy a snack?"
-    mc "No thanks."
-    s 4h "Eh??"
-    s "T-That's not like you at all!!"
-    mc "I have my reasons."
+    menu:
+        mc "Well..."
+
+        "Sure.":
+            s 4q "Yaaay~!"
+            mc "But wait."
+            pass
+        "I don't have much money, sorry.":
+            s 4h "Uuuuuuu~"
+            mc "Hey, I have an idea."
+            pass
+        "No thanks.":
+            s 4h "Eh??"
+            s "T-That's not like you at all!!"
+            mc "I have my reasons."
+            pass
     mc "Why don't we take a look at your purse, Sayori?"
     s 4l "E-Eh?"
     show sayori at s11
@@ -37,20 +49,15 @@ label ch2_main:
     "Only two small coins fall out."
     s 5a "A-Ahaha..."
     mc "I knew it..."
-    mc "I can see right through you, Sayori."
     s 5c "That's not fair!"
     s "How did you even know?"
     mc "It's simple."
-    mc "If you had enough money in the first place, you would have bought a snack before coming to the clubroom."
-    mc "So, either you're not hungry and wanted an excuse to take a walk..."
-    mc "Or, you planned to conveniently forget that you spent all your money, so that I would lend you some!"
-    mc "But there's one more thing..."
-    mc "...You're always hungry!"
-    mc "And so, that only leaves the one option!"
+    mc "You planned to conveniently forget that you spent all your money, so that I would lend you some!"
+    mc "Don't make like I don't know you, we've grown together Sayori, I know all of your tricks so far."
     s 4p "Uwaaa~!"
     s "I give up!"
     s "Don't make me feel guiltyyy!"
-    mc "If you feel guilty, that means you deserve to feel guilty..."
+    mc "I don't..."
     show yuri 1c at t33 zorder 2
     y "Ahaha."
     "Yuri suddenly giggles."
@@ -66,6 +73,7 @@ label ch2_main:
     s 1h "Yuriiii..."
     s "Tell [player] to let me borrow some money..."
     show sayori at t32 zorder 2
+    "Well, if Yuri tell me to borrow Sayori some money, I won't regret."
     show yuri at f33 zorder 3
     y 3h "That's--!"
     y "Don't get me involved like that, Sayori..."
@@ -111,8 +119,12 @@ label ch2_main:
     mc "After all, she told you guys she was bringing me to the club before she even told me..."
     show sayori at f32 zorder 3
     s 1h "B-But...!"
-    s "You wouldn't have come if it weren't for the cupcakes..."
-    s "So I had to trick Natsuki into making them!"
+    if ch0_breakfast == True:
+        s "You wouldn't have come if it weren't for the cupcakes..."
+        s "So I had to trick Natsuki into making them!"
+    else:
+        s "You wouldn't have come if it weren't for me..."
+        s "Even I had to trick Natsuki into making cupcakes as a plan B if you dared to reject."
     show sayori at t32 zorder 2
     mc "Come on, give me more credit than that, Sayori."
     show sayori at f32 zorder 3
@@ -135,7 +147,8 @@ label ch2_main:
     s 4m "I-Is this a miracle??"
     s "It's because I paid my restitution!"
     show sayori at t32 zorder 2
-    mc "Retribution..."
+    "[player] & Yuri" "Retribution..."
+    "We said that synchronized, maybe we have some connection? I hope so~"
     show sayori 4n
     show yuri at f33 zorder 3
     y 1u "Actually, that one almost worked..."
@@ -146,13 +159,16 @@ label ch2_main:
     n 3d "But then I heard you blab about the cupcakes."
     n "It was totally worth seeing your reaction, though. Ahaha!"
     show natsuki at t31 zorder 2
+    "That was very rude, what if the cookie goes through Sayori's eyes and hurts her?"
     show sayori at f32 zorder 3
     s 4m "N-Natsuki!"
     s "That's so nice of you!"
     s 4s "I'm so happy..."
     "Sayori hugs the cookie."
     show sayori at t32 zorder 2
-    mc "Jeez, just eat it..."
+    show natsuki at f31 zorder 3
+    n "Jeez, just eat it..."
+    show natsuki at t31 zorder 2
     "Sayori rapidly tears open the wrapper and takes a big bite."
     show sayori at f32 zorder 3
     s 4q "Sho good..."
@@ -201,12 +217,15 @@ label ch2_main:
     show yuri 1c
     "Yuri and I laugh as well."
     show yuri 1a
+    "And we see each other with a smile, then we both blush with a mischievous smile."
     show natsuki at f31 zorder 3
     n 1w "Jeez! You're such a kid sometimes!"
     n 1h "Monika! Can you tell Sayori--"
     n 1c "--Eh?"
     "Natsuki glances around."
     "Monika isn't in the clubroom."
+    "I saw her hanging with the most popular group during lunch time, as usual."
+    "So I'm pretty sure she's still with them."
     n 4q "Ugh..."
     n "Where's Monika, anyway?"
     show natsuki at t31 zorder 2
@@ -244,6 +263,27 @@ label ch2_main:
     show sayori at t32 zorder 2
     show natsuki 1p at f31 zorder 3
     n "Excuse me?!"
+    show natsuki at t31 zorder 2
+    mc "I don't think so..."
+    show yuri 1f at f33 zorder 3
+    show natsuki 1b at f31 zorder 3
+    show sayori 1c at f32 zorder 3
+    "Everyone" "What?!"
+    show yuri at t33 zorder 2
+    show natsuki at t31 zorder 2
+    show sayori at t32 zorder 2
+    mc "I mean, you're exaggerating Yuri."
+    mc "If she gets all the attention of the school is just because she's very good socializing with people, unlike all of us combined."
+    mc "But she's NOT more desirable than \"all of you combined\". Remember that..."
+    mc "In some part of the school, or even in the world, there's guys who wishes for a girl like anyone of you all."
+    show yuri 2v
+    show natsuki 1e
+    show sayori 1f
+    "I'm keeping my desire to tell Yuri that she is my most desirable woman, but it could scare her and at the same time giving a bad impression of mine to Sayori and Natsuki."
+    y 4w "Umm... Okay, if you say so..."
+    s 3j "I don't agree [player], Monika is a perfect person!"
+    n 5e "You sounded like a jerk at Monika. What if she hears those things?"
+    mc "Honestly, I don't care."
     hide natsuki
     hide sayori
     hide yuri
@@ -251,7 +291,13 @@ label ch2_main:
     "Suddenly, the door swings open."
     show monika 1g at l41
     m "Sorry! I'm super sorry!"
-    mc "Ah, there you are..."
+    show natsuki 5h at f43
+    n 5h "Ah, there you are..."
+    n "We were just talking about you."
+    show natsuki at t43
+    mc "Yeah..."
+    show natsuki at thide
+    hide natsuki
     m "I didn't mean to be late..."
     m "I hope you guys weren't worried or anything!"
     show sayori 4n at f42 zorder 3
@@ -263,6 +309,11 @@ label ch2_main:
     m 1l "B-Boyfriend...?"
     m "What on Earth are you talking about?"
     "Monika quizzically glances at me."
+    "WHAT THE FUCK?!"
+    "I couldn't help but put a cringe face after that gesture..."
+    "Isn't she going very fast for wanting something with me? It's just managing to scare me..."
+    if poemwinner[0] == "monika" and poemwinner[1] == "monika":
+        "I know writing poems for her is nice and all, but it's too much!"
     show monika at t41 zorder 2
     mc "Ah, never mind that..."
     mc "What held you up, anyway?"
@@ -295,6 +346,7 @@ label ch2_main:
     show monika at f41 zorder 3
     m "That's..."
     "Monika looks at me."
+    "What's her problem?"
     m 1a "Maybe once I get a little bit better, I will."
     show monika at t41 zorder 2
     show sayori at f42 zorder 3
@@ -314,6 +366,10 @@ label ch2_main:
     hide natsuki
     hide yuri
     "Monika smiles sweetly."
+    "At this point, I want to get out of the club. What a embarrasing situation...!"
+    "I will try to keep her away from me... The best what I can..."
+    if ch2_winner == "Monika":
+        "At least for now, until I compose myself..."
     mc "Ah..."
     mc "I didn't mean any pressure or anything like that!"
     m 1a "Ahaha, don't worry."
@@ -326,6 +382,7 @@ label ch2_main:
     mc "Not...not really."
     show monika at thide zorder 1
     hide monika
+    "I get away of Monika's tracking until I can feel safe."
     "I choose to leave out Sayori's mischievous escapade."
     "I'm sure Natsuki will end up complaining to her, anyway."
     "It looks like everyone has already settled down."
@@ -366,6 +423,7 @@ label ch2_main_end:
     y "That's a concern of mine as well."
     y "I don't really do well with last-minute preparations..."
     show yuri at t33 zorder 2
+    mc "Yeah, me neither."
     show monika at f32 zorder 3
     m 1b "Don't worry so much!"
     m "We're going to keep it simple, okay?"
@@ -387,6 +445,7 @@ label ch2_main_end:
     y 3n "P..."
     y 3o "Um, Monika..."
     show yuri at t33 zorder 2
+    mc "No way!"
     show monika at f32 zorder 3
     m 1k "Yeah! We're going to be having a poetry performance."
     m 1b "Each of us are going to choose a poem to recite during the event."
@@ -417,17 +476,21 @@ label ch2_main_end:
     y 3w "I could never...in my life...do something like that..."
     "Imagining it, Yuri shakes her head in fear."
     show yuri at t44 zorder 2
+    mc "Yeah, I agree with them."
+    mc "I never was good with that shit, I can feel ridiculed in front of everyone!"
+    mc "Maybe it's easy for you Monika, but we don't--"
     show sayori 1g at f41 zorder 3
     s "Guys..."
     show sayori at t41 zorder 2
     show monika at f43 zorder 3
     m 1g "No, Sayori..."
     m "I understand where they're coming from."
-    m "Remember that Natsuki and Yuri have never shared their poems with anyone until just a couple days ago..."
+    m "Remember that Natsuki, Yuri and even [player] have never shared their poems with anyone until just a couple days ago..."
     m "It's a lot to ask for them to recite their poems out loud to a whole room full of people."
     m 1r "I guess I kind of overlooked that."
     m "So, I'm sorry."
     show monika at t43 zorder 2
+    "Finally, some common sense on Monika."
     show natsuki 5g at f42 zorder 3
     n "..."
     show natsuki at t42 zorder 2
@@ -462,11 +525,14 @@ label ch2_main_end:
     show yuri 4b at f44 zorder 3
     y "..."
     show yuri at t44 zorder 2
+    mc "..."
     show sayori 1g
     "Natsuki and Yuri remain silent."
     "Sayori looks worried."
-    "I guess that leaves me no choice..."
-    mc "I agree..."
+    "In fact, Sayori had a point."
+    "I guess there's no other option than perfoming a poem to give the club a good impression... But I will need a lot of practice for this."
+    "Here goes nothing..."
+    mc "I agree with Sayori..."
     mc "I don't think it's too much to ask."
     mc "I think that Sayori and Monika have been trying really hard to get new members."
     mc "The least we can do is help them out a little bit."
@@ -499,6 +565,8 @@ label ch2_main_end:
     show yuri at f44 zorder 3
     y "This club is seriously going to be the death of me..."
     show yuri at t44 zorder 2
+    mc "I know how do you feel Yuri..."
+    "I pat her shoulder and make a dejectedly face while I say that."
     show monika at f43 zorder 3
     m 1l "Oh gosh..."
     m 1n "You'll be fine, Yuri."
@@ -517,6 +585,7 @@ label ch2_main_end:
     show monika at f43 zorder 3
     m 2a "Well, if you can't recite your poem in front of the club, how do you expect to do it in front of strangers?"
     show monika at t43 zorder 2
+    mc "Oh fuck... Monika is right..."
     show yuri 4c at f44 zorder 3
     show natsuki 1o
     y "Oh no..."
@@ -528,6 +597,7 @@ label ch2_main_end:
     show sayori 1r at f41 zorder 3
     s "Can I go next??"
     show sayori at t41 zorder 2
+    "Geez, I wonder how Sayori can be so optimist while I, Yuri and Natsuki are the contrary..."
     show monika at f43 zorder 3
     m "Ahaha. Of course."
     m 2d "Now, let's see..."
@@ -563,6 +633,7 @@ label ch2_main_end:
     show monika at f32 zorder 3
     m 1j "Ahaha, thank you very much."
     m 1a "I was just hoping to set a good example."
+    "Graciously, Sayori was the only one who congrated Monika for her perfoming."
     m "Are you ready to go next, Sayori?"
     show monika at t32 zorder 2
     show yuri 2r at l31
@@ -571,6 +642,7 @@ label ch2_main_end:
     s 1n "Uwah! Yuri's fired up all of a sudden!"
     "Yuri clutches a sheet of paper between her hands and stands up."
     "Keeping her head down, she walks quickly over to the podium."
+    "It's surprising though, I thought she would be the last one to perform..."
     show monika at thide zorder 1
     show sayori at thide zorder 1
     show yuri at t11 zorder 2
@@ -579,6 +651,8 @@ label ch2_main_end:
     y 2v "This poem is called--!"
     "Yuri anxiously glances at each of us."
     s "You can do it, Yuri..."
+    mc "Yeah! You can do it..."
+    "I look at her with an excited face and thumbs up with my right hand."
     y "It...It's called...{i}Afterimage of a Crimson Eye{/i}."
     "Yuri's voice shakes as she starts reading the poem."
     "Just a moment ago, she practically refused to do this."
@@ -591,17 +665,20 @@ label ch2_main_end:
     "This must be a rare glimpse into the whirling fire Yuri keeps concealed inside her head...!"
     show yuri 2t
     "Suddenly, she's finished."
-    "Everyone is stunned."
+    "Everyone is stunned. Especially me."
     "Yuri snaps back into reality and glances around her, as if she bewildered even herself."
     y 3o "I..."
     "...It's up to me to save this situation."
     "I'm the first to start applauding."
+    mc "Excellent job Yuri! That was very good!"
     "Everyone joins me afterward, and we give Yuri the recognition she deserves."
     "It's not that we didn't want to applaud for her."
     "But we were caught so off-guard that we must have forgotten."
     "As we applaud, Yuri holds the poem to her chest and rushes back into her seat."
     show yuri at lhide
     hide yuri
+    mc "Seriously, well done Yuri!"
+    y "T-T-Thanks [player]..."
     show monika 1a at t11 zorder 2
     m "Yuri, that was really good."
     m "Thank you for sharing."
@@ -619,7 +696,7 @@ label ch2_main_end:
     s 1s "...Ahaha!"
     s 4s "Sorry, I giggled..."
     s 4q "Ehehe..."
-    mc "Sayori..."
+    s "..."
     s 1l "It's a lot harder than I thought!"
     s "How did you guys do it so easily?"
     show monika 3a at t31 zorder 2
@@ -628,6 +705,7 @@ label ch2_main_end:
     m "Try not to think of it like you're reciting to other people."
     m "Imagine you're reciting it to yourself, like in front of a mirror, or in your own head."
     m "It's your poem, so it'll come out the best that way."
+    mc "I will take that into account."
     show sayori 1i
     s "I see, I see..."
     s "Okay, then..."
@@ -645,9 +723,14 @@ label ch2_main_end:
     "Sayori finishes, and we applaud."
     s 3q "I did it~!"
     mc "Good job, Sayori."
+    "I raise my arm euphorically."
     s "Ehehe, even [player] liked it."
     s "I guess that's a good sign~"
-    mc "What does that even mean...?"
+    mc "What does that mean...?"
+    mc "You thought it's a bad poem?"
+    "Where did that come from in first place?"
+    if poemwinner[1] == "monika":
+        mc "You should read mine then to see what's a bad poem..."
     show monika 2b at f31 zorder 3
     m "It came out nicely, Sayori."
     m "The atmosphere of the poem fits you really nicely."
@@ -683,6 +766,7 @@ label ch2_main_end:
     n "It's not like I can compare to you guys, anyway..."
     n "Might as well let [player] lower everyone's standards a little before I have to do it."
     show natsuki at t33 zorder 2
+    "Why did she attacked me like that? What's the fuck is wrong with her...?"
     show sayori at f32 zorder 3
     s 1g "Natsuki..."
     show sayori at t32 zorder 2
@@ -699,6 +783,18 @@ label ch2_main_end:
     "I recite my poem."
     "Since I'm not exactly confident in my own writing, it's hard to put energy into it."
     "Despite that, once I finish, I receive applause anyway."
+    #if ch2_winner != "Camilla":
+    "[ch2_winner] seems more satisfied than the others with my mediocre performance."
+    if ch2_winner == "Sayori":
+        "It was predictable after all... She's cheering for me even if I'm doing absolutely nothing."
+    elif ch2_winner == "Yuri":
+        "It makes me feel more happy now. Maybe we can be even closer together."
+    elif ch2_winner == "Natsuki":
+        "It is funny because she just teased me. Geez, who understands her?"
+    elif ch2_winner == "Monika":
+        "It still seems strange to me. I'm not used to her {i}good vibes{/i} yet."
+    else:
+        "But nobody feels like they like it at all..."
     mc "Sorry I'm not really as good as everyone else..."
     show monika at f42 zorder 3
     m 1a "Don't worry about it so much."
@@ -725,6 +821,7 @@ label ch2_main_end:
     n 2q "It's called..."
     n 1x "W-Why are you all looking at me?!"
     m "Because you're presenting..."
+    "I attempt to laught but I covered my mouth just in time-! Hahahahaha! Nice one Monika."
     n 2x "Hmph..."
     n 2h "Anyway...the poem is called {i}Jump{/i}."
     "Natsuki takes a breath."
@@ -770,9 +867,12 @@ label ch2_main_end:
     show monika at t31 zorder 2
     mc "Jeez..."
     mc "I should probably find some other poem to recite instead."
+    "Seriously, this fucking shit is an insult to real poets. I was lucky that [ch2_winner] liked it at least."
     show monika at f31 zorder 3
     m 1j "That's fine, too!"
     m 1a "It doesn't have to be your own."
+    mc "Thank goodness!"
+    "I raise my arms like if I were saying \"Hallelujah!\"."
     m "I'm already pleasantly surprised that you're putting in all this effort for the club."
     m 5 "It makes me really happy."
     show monika at t31 zorder 2
@@ -801,7 +901,7 @@ label ch2_main_end:
     "I stand up."
     "There's no way I'll be able to find the same enthusiasm as Sayori and Monika, but I'll do my best to get through it."
     "If it's for the sake of the club..."
-    "And impressing Monika..."
+    "And impressing [ch2_winner]..."
     "Then I'll have to do my best."
     show sayori 1a at t32 zorder 2
     mc "Ready to go, Sayori?"
@@ -818,6 +918,7 @@ label ch2_main_end:
     show sayori at t32 zorder 2
     mc "Jeez, guys..."
     mc "Don't make such a big deal out of it."
+    mc "We've been doing that for so long that it's normal..."
     show natsuki at t44 zorder 2
     show sayori at t43 zorder 2
     show monika at t42 zorder 2
@@ -833,7 +934,7 @@ label ch2_main_end:
     mc "...Whatever. Let's go already."
     scene bg residential_day
     with wipeleft_scene
-    $ ch2_winner = poemwinner[1].capitalize()
+    #$ ch2_winner = poemwinner[1].capitalize()
     if ch2_winner == "Sayori":
         $ ch2_winner = "Yuri"
     "I walk home with Sayori once more."
@@ -858,25 +959,34 @@ label ch2_main_end:
     menu:
         "Well..."
         "I would walk home with [ch2_winner].":
-            if ch2_winner == "Natsuki":
-                call ch2_end_natsuki
-            else:
+            if ch2_winner == "Yuri":
                 call ch2_end_yuri
+            elif ch2_winner == "Natsuki":
+                call ch2_end_natsuki
+            elif ch2_winner == "Monika":
+                call ch2_end_monika
+            else:
+                call ch2_end_camilla
         "I would still walk home with Sayori.":
             call ch2_end_sayori
 
     "Then again, the festival is only a few days away..."
     "Who knows what will happen in that time?"
     return
+    
 label ch2_end_sayori:
     mc "Sayori..."
     mc "You really think I would ditch you for [ch2_winner]?"
     s 1e "Eh?!"
     s "B-But..."
-    if ch2_winner == "Natsuki":
-        s "She's so cute and fun to be around..."
-    else:
+    if ch2_winner == "Yuri":
         s "She's so beautiful and smart..."
+    elif ch2_winner == "Natsuki":
+        s "She's so cute and fun to be around..."
+    elif ch2_winner == "Monika":
+        s "She's so friendly and popular..."
+    else:
+        s "She's very closer to you..."
     mc "Jeez..."
     mc "I already see her in the club every day."
     mc "Besides, you always seem to really like going home together..."
@@ -896,6 +1006,14 @@ label ch2_end_sayori:
     "But I want to respect her and keep her happy, too."
     return
 
+label ch2_end_yuri:
+    mc "Walking home with Yuri, huh..."
+    "Why does the thought of that make my heart pound...?"
+    mc "I mean..."
+    mc "Given how hard it is for her to socialize, I would feel awful turning her down..."
+    s 1x "Isn't she so beautiful and smart?"
+    jump ch2_end_shared
+
 label ch2_end_natsuki:
     mc "Walking home with Natsuki, huh..."
     "Why does the thought of that make my heart pound...?"
@@ -904,12 +1022,20 @@ label ch2_end_natsuki:
     s 1x "Isn't she so cute and fun to be around?"
     jump ch2_end_shared
 
-label ch2_end_yuri:
+label ch2_end_monika:
     mc "Walking home with Yuri, huh..."
     "Why does the thought of that make my heart pound...?"
     mc "I mean..."
-    mc "Given how hard it is for her to socialize, I would feel awful turning her down, so..."
-    s 1x "Isn't she so beautiful and smart?"
+    mc "She's very popular and outgoing, turning her down I may lost the chance to be in the top of the school Elite..."
+    s 1x "Isn't she so friendly and popular?"
+    jump ch2_end_shared
+
+label ch2_end_camilla:
+    mc "Walking home with Yuri, huh..."
+    "Why does the thought of that make my heart pound...?"
+    mc "I mean..."
+    mc "After all she did for me, turning down her would be very ungrateful of me..."
+    s 1x "Isn't she very closer to you?"
     jump ch2_end_shared
 
 label ch2_end_shared:

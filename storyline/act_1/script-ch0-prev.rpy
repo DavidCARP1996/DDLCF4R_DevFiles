@@ -188,14 +188,14 @@ label ch0_prev:
             pause 3.0
             mc "Fine, let's go!"
             pause 1.0
-            $ breakfast = True
+            $ ch0_breakfast = True
             
         "Skip breakfast":
             mc "I have no time to breakfast."
             mc "One minute more, and the school's doors will close in my face."
             "Yeah, it happened before..."
             pause 1.0
-            $ breakfast = False
+            $ ch0_breakfast = False
 
     mc "Wait."
     mc "I'm gonna take a cookie... for the way."
